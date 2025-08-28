@@ -1,8 +1,12 @@
 "use client";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
 import { useState } from "react";
+import { ModelDisplay } from "../../components/ModelDisplay";
+import { JumpingChick } from "../../models";
+import { ContactContent } from "../../constants";
+import Image from "next/image";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -12,13 +16,36 @@ export default function ContactPage() {
     phone: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send the form data to your backend
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "", phone: "" });
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong. Please try again later.');
+      }
+
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", message: "", phone: "" });
+    } catch (error: any) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false)
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,13 +57,14 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
+      
       <main className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6 text-gray-900">Get in Touch</h1>
+          
+          
+          <h1 className="text-5xl font-bold mb-6 text-gray-900">{ContactContent.title}</h1>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            We'd love to hear from you. Contact us for inquiries, orders, or partnerships. 
-            Our team is ready to assist you with any questions about our products and services.
+            {ContactContent.subtitle}
           </p>
         </div>
 
@@ -67,7 +95,7 @@ export default function ContactPage() {
                     placeholder="Enter your full name"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address *
@@ -83,7 +111,7 @@ export default function ContactPage() {
                     placeholder="Enter your email address"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number
@@ -98,7 +126,7 @@ export default function ContactPage() {
                     placeholder="Enter your phone number (optional)"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message *
@@ -114,13 +142,16 @@ export default function ContactPage() {
                     placeholder="Tell us about your inquiry, order, or partnership request"
                   />
                 </div>
-                
+
                 <button
                   type="submit"
+                  disabled={isLoading}
                   className="w-full btn-primary py-4 text-lg"
                 >
-                  Send Message
+                  {isLoading ? 'Sending...' : 'Send Message'}
                 </button>
+
+                {error && <p className="text-red-500 mt-4">{error}</p>}
               </form>
             )}
           </div>
@@ -134,38 +165,41 @@ export default function ContactPage() {
                   <div className="text-2xl">📍</div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Farm Location</h3>
-                    <p className="text-gray-700">Golden Nest Poultry Farm</p>
-                    <p className="text-gray-700">Gauteng, South Africa</p>
+                    <p className="text-gray-700">{ContactContent.contactInfo.location}</p>
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-6 bg-gradient-to-br from-accent-50 to-primary-50 rounded-2xl">
                 <div className="flex items-start gap-4">
                   <div className="text-2xl">📞</div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Phone</h3>
-                    <a href="tel:+27123456789" className="text-accent-600 hover:text-accent-700 font-medium">
-                      +27 12 345 6789
-                    </a>
+                    {ContactContent.contactInfo.phone.map((phone) => (
+                      <div key={phone}>
+                        <a href={`tel:${phone}`} className="text-accent-600 hover:text-accent-700 font-medium">
+                          {phone}
+                        </a>
+                      </div>
+                    ))}
                     <p className="text-sm text-gray-600 mt-1">Available Mon-Fri, 8AM-6PM</p>
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-6 bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl">
                 <div className="flex items-start gap-4">
                   <div className="text-2xl">✉️</div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Email</h3>
-                    <a href="mailto:info@goldennestpoultry.co.za" className="text-accent-600 hover:text-accent-700 font-medium">
-                      info@goldennestpoultry.co.za
+                    <a href={`mailto:${ContactContent.contactInfo.email}`} className="text-accent-600 hover:text-accent-700 font-medium">
+                      {ContactContent.contactInfo.email}
                     </a>
                     <p className="text-sm text-gray-600 mt-1">We respond within 24 hours</p>
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-6 bg-gradient-to-br from-accent-50 to-primary-50 rounded-2xl">
                 <div className="flex items-start gap-4">
                   <div className="text-2xl">🕒</div>
@@ -184,15 +218,20 @@ export default function ContactPage() {
         {/* Map Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Find Us</h2>
-          <div className="bg-gray-100 rounded-2xl p-8 text-center">
-            <div className="w-full h-64 bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
+          <div className="bg-gray-100 rounded-2xl p-8">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="text-center">
                 <div className="text-4xl mb-2">🗺️</div>
-                <p className="text-gray-600">Interactive Map Coming Soon</p>
+                <p className="text-gray-600 mb-2">Interactive Map Coming Soon</p>
                 <p className="text-sm text-gray-500">We're working on integrating Google Maps</p>
               </div>
+              {/* <div className="flex justify-center">
+                <ModelDisplay className="w-full h-[200px]" scale={0.4}>
+                  <JumpingChick />
+                </ModelDisplay>
+              </div> */}
             </div>
-            <p className="text-gray-600">Find us easily with our detailed directions and map integration.</p>
+            <p className="text-gray-600 text-center mt-4">Find us easily with our detailed directions and map integration.</p>
           </div>
         </section>
 
@@ -200,7 +239,7 @@ export default function ContactPage() {
         <section className="text-center">
           <h2 className="text-3xl font-bold mb-6 text-gray-900">Other Ways to Connect</h2>
           <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-            Prefer to reach out through other channels? We're available on social media and welcome 
+            Prefer to reach out through other channels? We're available on social media and welcome
             farm visits by appointment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

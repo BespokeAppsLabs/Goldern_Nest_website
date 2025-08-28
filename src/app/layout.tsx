@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SEOContent } from "../constants";
+import Image from "next/image";
+import Link from "next/link";
+import { Navbar } from "@/components";
 
 export const metadata: Metadata = {
-  title: "Golden Nest Poultry - Fresh Poultry, Trusted Quality",
-  description: "Golden Nest Poultry is committed to delivering farm-fresh eggs and healthy chickens with the highest standards of care. Serving Gauteng, South Africa with premium poultry products.",
-  keywords: "poultry, eggs, chickens, farm fresh, South Africa, Gauteng, quality poultry, fresh eggs, broiler chickens, layer chickens",
+  title: SEOContent.default.title,
+  description: SEOContent.default.description,
+  keywords: SEOContent.default.keywords,
   authors: [{ name: "Golden Nest Poultry" }],
   creator: "Golden Nest Poultry",
   publisher: "Golden Nest Poultry",
@@ -18,13 +22,13 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Golden Nest Poultry - Fresh Poultry, Trusted Quality",
-    description: "Golden Nest Poultry is committed to delivering farm-fresh eggs and healthy chickens with the highest standards of care.",
+    title: SEOContent.default.title,
+    description: SEOContent.default.description,
     url: "https://goldennestpoultry.co.za",
     siteName: "Golden Nest Poultry",
     images: [
       {
-        url: "/og-image.jpg",
+        url: SEOContent.default.ogImage,
         width: 1200,
         height: 630,
         alt: "Golden Nest Poultry Farm",
@@ -35,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golden Nest Poultry - Fresh Poultry, Trusted Quality",
-    description: "Golden Nest Poultry is committed to delivering farm-fresh eggs and healthy chickens with the highest standards of care.",
-    images: ["/og-image.jpg"],
+    title: SEOContent.default.title,
+    description: SEOContent.default.description,
+    images: [SEOContent.default.twitterImage],
   },
   robots: {
     index: true,
@@ -62,6 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+   
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -69,6 +74,20 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="antialiased">
+        {/* Background Logo */}
+      <div className="fixed bottom-4 left-4 z-50">
+         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Image
+          src="/images/logo_transparent.png"
+          alt="Golden Nest Poultry Logo"
+          width={200}
+          height={200}
+          className=" object-contain"
+          priority
+        />
+        </Link>
+        <Navbar />
+      </div>
         {children}
       </body>
     </html>
