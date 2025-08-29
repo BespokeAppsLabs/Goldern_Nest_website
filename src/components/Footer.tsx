@@ -119,7 +119,7 @@ Don't miss this opportunity to nurture a potential long-term customer relationsh
           </div>
 
           {/* Social Links */}
-          <div>
+          {/* <div>
             <h4 className="text-xl font-semibold mb-4">Follow Us</h4>
             <p className="text-gray-300 mb-6">
               Connect with us on social media for farm updates and behind-the-scenes content.
@@ -139,6 +139,10 @@ Don't miss this opportunity to nurture a potential long-term customer relationsh
                 </button>
               ))}
             </div>
+          </div> */}
+
+          <div className="flex justify-center items-center">
+              <Image src="/images/BRAND_LOGO.png" alt="Golden Nest Logo" width={250} height={250} />
           </div>
         </div>
 

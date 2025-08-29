@@ -166,7 +166,7 @@ export default function ExpandableCardDemo({ cards: externalCards }: { cards?: C
                     {(() => {
                       if (active && 'categoryData' in active && 'testimonials' in active && active.categoryData && active.testimonials) {
                         return (
-                          <div className="w-full">
+                          <div className="w-full ">
                             <p className="mb-6 text-gray-700">{active.categoryData.description}</p>
                             <AnimatedTestimonials testimonials={active.testimonials} />
                           </div>

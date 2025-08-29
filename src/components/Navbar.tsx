@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAnimate } from "motion/react";
 import { NavigationContent } from "../constants/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true); // Always visible for top navbar
@@ -125,25 +126,21 @@ export default function Navbar() {
   // Mobile Navigation
   const MobileNav = () => (
     <>
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button with Logo */}
       <button
         type="button"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="md:hidden fixed top-4 right-4 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg rounded-full p-3 border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:bg-white dark:hover:bg-gray-900 hover:shadow-xl"
+        className="md:hidden fixed top-4 right-4 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg rounded-full p-2 border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:bg-white dark:hover:bg-gray-900 hover:shadow-xl hover:scale-105"
         aria-label="Toggle mobile menu"
         aria-expanded={isMobileMenuOpen}
       >
-        <div className="w-6 h-6 flex flex-col justify-center items-center">
-          <span className={`block h-0.5 w-5 bg-gray-700 dark:bg-white transition-all duration-300 ${
-            isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'
-          }`} />
-          <span className={`block h-0.5 w-5 bg-gray-700 dark:bg-white transition-all duration-300 ${
-            isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
-          }`} />
-          <span className={`block h-0.5 w-5 bg-gray-700 dark:bg-white transition-all duration-300 ${
-            isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'
-          }`} />
-        </div>
+        <Image
+          src="/images/logo_transparent.png"
+          alt="Golden Nest Logo"
+          className="w-8 h-8 object-contain"
+          width={32}
+          height={32}
+        />
       </button>
 
       {/* Mobile Menu Overlay */}
@@ -158,15 +155,23 @@ export default function Navbar() {
 
       {/* Mobile Menu Panel */}
       <nav
-        className={`md:hidden fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl z-50 transform transition-transform duration-300 ease-in-out border-l border-gray-200/50 dark:border-gray-700/50 ${
+        className={`md:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl z-50 transform transition-transform duration-300 ease-in-out rounded-l-3xl border-l border-gray-200/50 dark:border-gray-700/50 ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-label="Mobile navigation"
       >
         <div className="flex flex-col h-full">
           {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200/50 dark:border-gray-700/50">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Menu</h2>
+          <div className="flex items-center justify-between p-4 border-b border-gray-200/50 dark:border-gray-700/50">
+            <div className="flex items-center">
+              <Image
+                src="/images/logo_transparent.png"
+                alt="Golden Nest Logo"
+                className="w-20 h-20 object-contain"
+                width={80}
+                height={80}
+              />
+            </div>
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -186,8 +191,8 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Items */}
-          <div className="flex-1 overflow-y-auto py-6">
-            <div className="px-6 space-y-2">
+          <div className="flex-1 overflow-y-auto py-4">
+            <div className="px-4 space-y-1">
               {NavigationContent.menu.map((item) => {
                 const IconComponent = item.icon;
                 const isSelected = selectedItem === item.label;
@@ -200,7 +205,7 @@ export default function Navbar() {
                       setIsMobileMenuOpen(false);
                       handleItemClick(item.label);
                     }}
-                    className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-300
+                    className={`flex items-center gap-3 p-3 rounded-xl transition-all duration-300
                       ${isSelected
                         ? "bg-primary-500 text-white shadow-lg scale-105"
                         : "text-gray-900 dark:text-white hover:bg-primary-100 dark:hover:bg-accent-800"

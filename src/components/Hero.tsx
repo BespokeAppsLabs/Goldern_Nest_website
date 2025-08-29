@@ -92,65 +92,65 @@ export default function Hero() {
       {/* Spotlight gradient background */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
 
+      {/* 3D Model Display - Desktop - Background Layer */}
+      <div className="hidden md:flex absolute inset-0 items-center justify-center z-0" style={{ width: '100vw', height: '100vh', transform: 'translateZ(0)', willChange: 'transform' }}>
+        <ThreeDErrorBoundary>
+          <Canvas
+            shadows
+            camera={{
+              position: [0, 1.5, 12],
+              fov: 50,
+              near: 0.1,
+              far: 100
+            }}
+          >
+            {/* Enhanced Lighting Setup */}
+            <ambientLight intensity={2} />
+            <directionalLight
+              position={[10, 10, 10]}
+              intensity={1}
+              castShadow
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+            />
+
+            {/* Camera Controls */}
+            <OrbitControls
+              enableZoom={false}
+              enableDamping
+              dampingFactor={0.1}
+              autoRotate
+              autoRotateSpeed={0.5}
+              maxPolarAngle={Math.PI / 2}
+              minPolarAngle={Math.PI / 3}
+            />
+
+            {/* 3D Model */}
+            <ChickenModel />
+          </Canvas>
+        </ThreeDErrorBoundary>
+      </div>
+
       {/* Content Container */}
-      <div className="container-width relative z-10 flex flex-col md:flex-row md:items-center md:justify-between min-h-screen py-20 md:py-0">
-        {/* Text Content */}
-        <div ref={scopeRef} className="max-w-lg md:max-w-2xl lg:max-w-3xl mb-8 md:mb-0">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight">
+      <div className="container-width relative z-10 flex flex-col md:flex-row md:items-center md:justify-center min-h-screen py-20 md:py-0">
+        {/* Text Content - Transparent Background */}
+        <div ref={scopeRef} className="max-w-lg md:max-w-2xl lg:max-w-3xl mb-8 md:mb-0 bg-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight drop-shadow-lg">
             {HeroContent.title.split(',')[0]},{" "}
-            <span className="text-gradient">{HeroContent.title.split(',')[1]}</span>
+            <span className="text-gradient drop-shadow-lg">{HeroContent.title.split(',')[1]}</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-gray-700 leading-relaxed max-w-full md:max-w-none">
+          <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-gray-700 leading-relaxed max-w-full md:max-w-none drop-shadow-md">
             {HeroContent.description}
           </p>
           <button
             type="button"
-            className="btn-primary w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
+            className="btn-primary w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-3 md:py-4 drop-shadow-lg"
             onClick={() => {
               window.location.href = "/products";
             }}
           >
             {HeroContent.cta.primary}
           </button>
-        </div>
-
-        {/* 3D Model Display - Desktop */}
-        <div className="hidden md:flex absolute md:relative inset-0 md:inset-auto md:flex-1 items-center justify-center z-0" style={{ width: '100vw', height: '100vh', transform: 'translateZ(0)', willChange: 'transform' }}>
-          <ThreeDErrorBoundary>
-            <Canvas
-              shadows
-              camera={{
-                position: [0, 1.5, 12],
-                fov: 50,
-                near: 0.1,
-                far: 100
-              }}
-            >
-              {/* Enhanced Lighting Setup */}
-              <ambientLight intensity={2} />
-              <directionalLight
-                position={[10, 10, 10]}
-                intensity={1}
-                castShadow
-                shadow-mapSize-width={1024}
-                shadow-mapSize-height={1024}
-              />
-
-              {/* Camera Controls */}
-              <OrbitControls
-                enableZoom={false}
-                enableDamping
-                dampingFactor={0.1}
-                autoRotate
-                autoRotateSpeed={0.5}
-                maxPolarAngle={Math.PI / 2}
-                minPolarAngle={Math.PI / 3}
-              />
-
-              {/* 3D Model */}
-              <ChickenModel />
-            </Canvas>
-          </ThreeDErrorBoundary>
         </div>
 
         {/* Mobile 3D Model Placeholder */}

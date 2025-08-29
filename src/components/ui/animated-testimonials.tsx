@@ -39,10 +39,10 @@ export const AnimatedTestimonials = ({
     return Math.floor(Math.random() * 21) - 10;
   };
   return (
-    <div className="mx-auto max-w-sm px-4 py-6 font-heading antialiased md:max-w-4xl md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div className="mx-auto max-w-sm px-4 py-6 font-heading antialiased md:max-w-4xl md:px-8 lg:px-12 rounded-2xl ">
+      <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 ">
         <div className="relative">
-          <div className="relative h-[500px] md:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-primary-200/30">
+          <div className="relative h-[500px] md:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-primary-200/30 be">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -80,7 +80,7 @@ export const AnimatedTestimonials = ({
                     alt={testimonial.name}
                     width={500}
                     height={500}
-                    className="h-full w-full rounded-3xl object-contain object-center cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary-300/20 border-2 border-transparent hover:border-primary-300/50"
+                    className="h-full w-full rounded-3xl object-cover cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary-300/20 border-2 border-transparent hover:border-primary-300/50"
                     draggable={false}
                     onClick={handleNext}
                   />

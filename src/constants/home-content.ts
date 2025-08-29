@@ -156,9 +156,9 @@ export const OurProductsContent = {
         {
             name: 'Organic Eggs',
             subtitle: 'Premium organic eggs from free-range hens',
-            description: 'These eggs come from chickens that roam freely and are fed certified organic feed, resulting in superior taste and nutritional value.',
+            description: 'These eggs come from chickens that are fed certified organic feed, resulting in superior taste and nutritional value.',
             price: 'R65/dozen',
-            image: '/images/products/egg on white background.jpeg'
+            image: '/images/egg_collection.jpg'
         },
         {
             name: 'Day-Old Chicks',
@@ -481,33 +481,21 @@ export const GalleryContent = {
                 {
                     id: "farm-life-1",
                     src: "/images/products/farmLife_1.jpeg",
-                    alt: "Chickens roaming freely in spacious outdoor areas",
-                    title: "Free-Range Paradise"
+                    alt: "Chickens secure and safe in their enclosure",
+                    title: "Factory Farm"
                 },
                 {
                     id: "farm-life-2",
-                    src: "/images/products/farmLife_2.jpeg",
-                    alt: "Morning farm routine with fresh grass and sunlight",
-                    title: "Morning Awakening"
+                    src: "/images/products/product_2.jpeg",
+                    alt: "Eggs are inspected for quality when they are collected",
+                    title: "Quality Inspection"
                 },
                 {
                     id: "farm-life-3",
-                    src: "/images/products/farmLife_3.jpeg",
-                    alt: "Chickens enjoying natural feeding in the pasture",
-                    title: "Natural Foraging"
+                    src: "/images/products/product_5.jpeg",
+                    alt: "Eggs are collected and sorted for best customer experience",
+                    title: "Packaging with Care"
                 },
-                {
-                    id: "farm-life-4",
-                    src: "/images/products/FarmLife_5.jpeg",
-                    alt: "Healthy chickens interacting with their environment",
-                    title: "Healthy Interactions"
-                },
-                {
-                    id: "farm-life-5",
-                    src: "/images/products/farmLife_6.jpeg",
-                    alt: "Family of chickens exploring the farm grounds",
-                    title: "Family Exploration"
-                }
             ]
         },
         "Animal Welfare": {
@@ -516,34 +504,22 @@ export const GalleryContent = {
             images: [
                 {
                     id: "animal-welfare-1",
-                    src: "/images/gallary/layer_chicken.jpeg",
-                    alt: "Veterinarian conducting health checks on chickens",
-                    title: "Health Monitoring"
+                    src: "/images/layer_feeding.jpg",
+                    alt: "Our Chickens are fed with the best quality feed",
+                    title: "Feeding with Care"
                 },
                 {
                     id: "animal-welfare-2",
-                    src: "/images/gallary/boiler_chicken_left.jpeg",
-                    alt: "Spacious housing with natural ventilation",
-                    title: "Comfortable Housing"
+                    src: "/images/little-chicks-farm.jpg",
+                    alt: "Our Chickens are raised in a safe and secure environment",
+                    title: "Safe and Secure Environment"
                 },
                 {
                     id: "animal-welfare-3",
-                    src: "/images/gallary/layer_up_close.jpeg",
-                    alt: "Chickens with access to fresh water stations",
-                    title: "Fresh Water Access"
+                    src: "/images/chicken-boiler-breed.jpg",
+                    alt: "Our Chickens are monitored for their health and well-being",
+                    title: "Health Monitoring"
                 },
-                {
-                    id: "animal-welfare-4",
-                    src: "/images/boiler_chicken_right.jpeg",
-                    alt: "Nutritious feed being distributed to chickens",
-                    title: "Premium Nutrition"
-                },
-                {
-                    id: "animal-welfare-5",
-                    src: "/images/chick_foot_on_egg.jpeg",
-                    alt: "Chickens in stress-free handling procedures",
-                    title: "Gentle Handling"
-                }
             ]
         },
         "Products": {
@@ -552,70 +528,60 @@ export const GalleryContent = {
             images: [
                 {
                     id: "products-1",
-                    src: "/images/hero/eggs/eggTray.jpg",
-                    alt: "Fresh eggs in collection trays",
-                    title: "Fresh Egg Collection"
+                    src: "/images/products/packaging.jpeg",
+                    alt: "Fresh eggs in collection trays with branded packaging",
+                    title: "Packaging with Care"
                 },
                 {
                     id: "products-2",
-                    src: "/images/hero/boilers/boiler_chickens.jpg",
+                    src: "/images/products/product_1.jpeg",
                     alt: "Premium broiler chickens ready for market",
                     title: "Broiler Chickens"
                 },
                 {
                     id: "products-3",
-                    src: "/images/hero/layers/laying-hens.jpg",
+                    src: "/images/egg-heap.jpg",
                     alt: "Layer hens in production facilities",
                     title: "Layer Hens"
                 },
                 {
                     id: "products-4",
-                    src: "/images/chick_out_of_egg.jpeg",
-                    alt: "Day-old chicks in incubation",
-                    title: "Day-Old Chicks"
-                },
-                {
-                    id: "products-5",
-                    src: "/images/products/egg on white background.jpeg",
-                    alt: "Organic eggs with vibrant yolks",
-                    title: "Organic Eggs"
+                    src: "/images/egg_collection.jpg",
+                    alt: "Eggs are collected and sorted for best customer experience",
+                    title: "Egg Collection"
                 }
+     
             ]
         },
         "Infrastructure": {
             title: "Modern Farming Facilities",
-            description: "State-of-the-art infrastructure designed for efficiency, safety, and animal comfort.",
-            images: [
+            description: "Our infrastructure is designed for efficiency, safety, and animal comfort.",
+            images: [   
                 {
                     id: "infrastructure-1",
-                    src: "/images/products/boiler_house.jpeg",
-                    alt: "Modern chicken housing with automated systems",
-                    title: "Automated Housing"
+                    src: "/images/products/boiler_house_2.jpeg",
+                    alt: "Temperature controlled environment for our chickens",
+                    title: "Temperature Control"
                 },
                 {
                     id: "infrastructure-2",
-                    src: "/images/products/boiler_house_2.jpeg",
-                    alt: "Solar-powered farm operations",
-                    title: "Solar Energy Systems"
+                    src: "/images/water_system.jpeg",
+                    alt: "Modern chicken housing with efficient systems for water management",
+                    title: "Water System"
                 },
+             
                 {
                     id: "infrastructure-3",
                     src: "/images/gallary/layer_house.jpeg",
-                    alt: "Advanced ventilation systems",
-                    title: "Climate Control"
+                    alt: "Egg collection systems are safe and ensures best quality eggs",
+                    title: "Egg Collection"
                 },
                 {
                     id: "infrastructure-4",
                     src: "/images/gallary/chick_house.jpg",
-                    alt: "Water treatment and recycling systems",
-                    title: "Water Management"
+                    alt: "chicks are monitored in temperature controlled environment",
+                    title: "Chick Monitoring"
                 },
-                {
-                    id: "infrastructure-5",
-                    src: "/images/gallary/chick_house_2.jpg",
-                    alt: "Feed storage and distribution facilities",
-                    title: "Feed Storage Systems"
-                }
             ]
         },
         "Quality": {
@@ -624,70 +590,28 @@ export const GalleryContent = {
             images: [
                 {
                     id: "quality-1",
-                    src: "/images/products/packaging.jpeg",
-                    alt: "Laboratory testing of egg quality",
-                    title: "Lab Testing"
+                   src: "/images/random_test.jpg",
+                    alt: "Quality is ensure by random testing of eggs",
+                    title: "Quality Assurance"
                 },
                 {
                     id: "quality-2",
-                    src: "/images/gallary/eggs_in_busket.jpeg",
-                    alt: "Quality inspection of poultry health",
-                    title: "Health Inspections"
+                    src: "/images/sorting_basket.jpg",
+                    alt: "Eggs are sorted for best customer experience",
+                    title: "Sorting with Care"
                 },
                 {
                     id: "quality-3",
-                    src: "/images/products/eggs_in_busket_2.jpeg",
-                    alt: "Feed quality verification process",
-                    title: "Feed Quality Control"
+                    src: "/images/products/product_3.jpeg",
+                    alt: "Eggs are stored in a temperature controlled environment",
+                    title: "Storage with Care"
                 },
                 {
                     id: "quality-4",
-                    src: "/images/chick_in_egg.jpeg",
-                    alt: "Temperature monitoring systems",
-                    title: "Temperature Control"
-                },
-                {
-                    id: "quality-5",
-                    src: "/images/chick_walking_egg.jpeg",
-                    alt: "Cleanliness and sanitation protocols",
-                    title: "Sanitation Standards"
-                }
-            ]
-        },
-        "Operations": {
-            title: "Daily Operations Excellence",
-            description: "Efficient operations ensure consistent quality and timely delivery to our customers.",
-            images: [
-                {
-                    id: "operations-1",
-                    src: "/images/products/construction_3.jpeg",
-                    alt: "Efficient egg collection and sorting",
-                    title: "Egg Processing"
-                },
-                {
-                    id: "operations-2",
-                    src: "/images/products/construction_4.jpeg",
-                    alt: "Morning feeding schedule execution",
-                    title: "Feeding Operations"
-                },
-                {
-                    id: "operations-3",
                     src: "/images/products/construction_6.jpeg",
-                    alt: "Facility cleaning and maintenance",
-                    title: "Facility Maintenance"
+                    alt: "Warehouses are regularly cleaned and well-maintained",
+                    title: "Warehouse Maintenance"
                 },
-                {
-                    id: "operations-4",
-                    src: "/images/products/construction_7.jpeg",
-                    alt: "Inventory management systems",
-                    title: "Inventory Control"
-                },
-                {
-                    id: "operations-5",
-                    src: "/images/products/cinstruction_5.jpeg",
-                    alt: "Logistics and delivery coordination",
-                    title: "Logistics Management"
-                }
             ]
         },
         "Team": {
@@ -696,108 +620,25 @@ export const GalleryContent = {
             images: [
                 {
                     id: "team-1",
-                    src: "/images/products/product_1.jpeg",
-                    alt: "Farm management team in action",
-                    title: "Farm Management"
+                    src: "/images/products/FarmLife_5.jpeg",
+                    alt: "Packing facility ensuring quality control",
+                    title: "Packing with Care"
                 },
                 {
                     id: "team-2",
-                    src: "/images/products/product_2.jpeg",
+                    src: "/images/products/farmLife_3.jpeg",
                     alt: "Veterinarians conducting health checks",
                     title: "Veterinary Care"
                 },
                 {
                     id: "team-3",
-                    src: "/images/products/product_3.jpeg",
+                    src: "/images/products/farmLife_2.jpeg",
                     alt: "Quality control specialists at work",
                     title: "Quality Control"
                 },
-                {
-                    id: "team-4",
-                    src: "/images/products/Product_4.jpeg",
-                    alt: "Customer service representatives",
-                    title: "Customer Service"
-                },
-                {
-                    id: "team-5",
-                    src: "/images/products/Product_5.jpeg",
-                    alt: "Logistics and delivery team",
-                    title: "Operations Team"
-                }
+
             ]
         },
-        "Sustainability": {
-            title: "Environmental Stewardship",
-            description: "Our commitment to sustainable practices protects the environment for future generations.",
-            images: [
-                {
-                    id: "sustainability-1",
-                    src: "/images/gallary/construction_prep.jpeg",
-                    alt: "Solar panel installations for renewable energy",
-                    title: "Renewable Energy"
-                },
-                {
-                    id: "sustainability-2",
-                    src: "/images/gallary/construction_site.jpeg",
-                    alt: "Rainwater harvesting systems",
-                    title: "Water Conservation"
-                },
-                {
-                    id: "sustainability-3",
-                    src: "/images/gallary/construction.jpeg",
-                    alt: "Composting facilities for waste management",
-                    title: "Waste Management"
-                },
-                {
-                    id: "sustainability-4",
-                    src: "/images/gallary/new_house_prep.jpeg",
-                    alt: "Native vegetation preservation",
-                    title: "Biodiversity Protection"
-                },
-                {
-                    id: "sustainability-5",
-                    src: "/images/gallary/layer_site.jpeg",
-                    alt: "Energy-efficient farming equipment",
-                    title: "Efficient Technology"
-                }
-            ]
-        },
-        "Service": {
-            title: "Customer Excellence",
-            description: "Dedicated to providing outstanding service and building lasting relationships.",
-            images: [
-                {
-                    id: "service-1",
-                    src: "/images/gallary/eggs_in_busket.jpeg",
-                    alt: "Customer consultation and support",
-                    title: "Customer Support"
-                },
-                {
-                    id: "service-2",
-                    src: "/images/products/factory.jpeg",
-                    alt: "Reliable delivery services",
-                    title: "Delivery Excellence"
-                },
-                {
-                    id: "service-3",
-                    src: "/images/gallary/chick_house.jpg",
-                    alt: "Farm tours and educational visits",
-                    title: "Educational Tours"
-                },
-                {
-                    id: "service-4",
-                    src: "/images/products/packaging.jpeg",
-                    alt: "Custom order fulfillment",
-                    title: "Custom Orders"
-                },
-                {
-                    id: "service-5",
-                    src: "/images/boiler_chicken_right.jpeg",
-                    alt: "Bulk order processing",
-                    title: "Bulk Services"
-                }
-            ]
-        }
     },
     images: [
         {

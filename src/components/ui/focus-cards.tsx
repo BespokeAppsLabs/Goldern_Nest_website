@@ -123,30 +123,11 @@ export function FocusCards({ cards }: { cards: Card[] }) {
       <AnimatePresence>
         {active && typeof active === "object" ? (
           <div className="fixed inset-0 grid place-items-center z-[100]">
-            <motion.button
-              key={`button-${active.title}-${id}`}
-              layout
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  duration: 0.05,
-                },
-              }}
-              className="flex absolute top-4 right-4 lg:hidden items-center justify-center bg-white rounded-full h-10 w-10 shadow-lg border-2 border-gray-200 z-50 touch-manipulation"
-              onClick={() => setActive(null)}
-            >
-              <CloseIcon />
-            </motion.button>
+            
             <motion.div
               layoutId={`card-${active.title}-${cards.findIndex(c => c.title === active.title)}`}
               ref={ref}
-              className="w-full max-w-[800px] h-auto max-h-[90vh] md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[800px] h-auto max-h-[90vh] md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden rounded-2xl"
             >
               {/* <motion.div layoutId={`image-${active.title}-${id}`}>
                 <Image
@@ -158,7 +139,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
                 />
               </motion.div> */}
 
-              <div>
+              <div className="rounded-2xl">
                 {/* <div className="flex justify-between items-start p-4">
                   <div className="">
                     <motion.h3
@@ -186,7 +167,27 @@ export function FocusCards({ cards }: { cards: Card[] }) {
                     Close
                   </motion.button>
                 </div> */}
-                <div className="pt-4 relative px-4">
+                <div className="pt-2 relative px-4">
+                  <motion.button
+                    key={`button-${active.title}-${id}`}
+                    layout
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: {
+                        duration: 0.05,
+                      },
+                    }}
+                    className="flex absolute top-0 right-2 lg:hidden items-center justify-center rounded-full h-10 w-10  z-50 touch-manipulation"
+                    onClick={() => setActive(null)}
+                >
+                 <CloseIcon />
+                </motion.button>
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
@@ -213,7 +214,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
           </div>
         ) : null}
       </AnimatePresence>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full ">
         {cards.map((card, index) => (
           <Card
             key={card.title}

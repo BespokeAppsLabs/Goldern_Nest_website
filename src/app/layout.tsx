@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Navbar } from "@/components";
 import Script from "next/script";
 import { config } from "@/config/index.ts";
+import { ThemeProvider } from "@/components/theme-provider";
 
 
 export const metadata: Metadata = {
@@ -69,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
    
       <head>
         <link rel="icon" href="/favicon.ico" />
@@ -87,6 +88,12 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
         {/* Background Logo - Hidden on mobile to avoid overlap */}
         <div className="hidden md:fixed md:bottom-4 md:left-4 md:z-50 md:block">
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
@@ -101,9 +108,10 @@ export default function RootLayout({
           </Link>
         </div>
         <Navbar />
-        <main className="pt-20 md:pt-24">
+        <main className="md:pt-24">
           {children}
         </main>
+        </ThemeProvider>
       </body>
     </html>
   );
