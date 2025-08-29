@@ -2,9 +2,9 @@ export const SEOContent = {
     default: {
         title: 'Golden Nest Poultry - Premium Farm-Fresh Eggs | Limpopo, South Africa',
         description: 'Experience the golden difference with premium farm-fresh eggs from Golden Nest Poultry. Free-range, organic, and specialty eggs delivered from our Limpopo farm to your table.',
-        keywords: 'farm fresh eggs, free range eggs, organic eggs, poultry farm, Limpopo, South Africa, golden nest, premium eggs, farm to table',
-        ogImage: '/images/og-image.jpg',
-        twitterImage: '/images/twitter-image.jpg'
+        keywords: 'buy farm fresh eggs Modimolle, free range eggs Modimolle Limpopo, organic eggs Modimolle South Africa, premium farm eggs Modimolle, farm-to-table eggs Modimolle, bulk egg orders Modimolle Limpopo, Golden Nest Poultry Modimolle, best eggs for sale Modimolle, fresh eggs delivery Modimolle, organic farm eggs Limpopo, free range eggs South Africa, local poultry farm Modimolle, healthy eggs Modimolle Limpopo, premium organic eggs South Africa, Modimolle farm fresh poultry, farm eggs near me Limpopo',
+        ogImage: 'https://goldennestpoultry.co.za/images/og-image.jpg',
+        twitterImage: 'https://goldennestpoultry.co.za/images/twitter-image.jpg'
     },
     pages: {
         home: {
@@ -36,54 +36,6 @@ export const SEOContent = {
             title: 'Contact Golden Nest Poultry | Get Premium Eggs Delivered',
             description: 'Get in touch with Golden Nest Poultry for premium eggs and poultry products. Online ordering, bulk orders, and farm visits available.',
             keywords: 'contact golden nest, order eggs, bulk orders, farm visits, delivery service'
-        }
-    },
-    structuredData: {
-        organization: {
-            '@type': 'Organization',
-            name: 'Golden Nest Poultry',
-            description: 'Premium farm-fresh eggs and poultry products from Limpopo, South Africa',
-            url: 'https://goldennestpoultry.co.za',
-            logo: 'https://goldennestpoultry.co.za/images/logo.png',
-            contactPoint: {
-                '@type': 'ContactPoint',
-                telephone: '+27-83-353-1044',
-                contactType: 'customer service',
-                areaServed: 'ZA',
-                availableLanguage: 'English'
-            },
-            address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'Limpopo',
-                addressCountry: 'ZA',
-                addressRegion: 'Limpopo'
-            },
-            sameAs: [
-                'https://facebook.com/goldennestpoultry',
-                'https://instagram.com/goldennestpoultry'
-            ]
-        },
-        localBusiness: {
-            '@type': 'LocalBusiness',
-            name: 'Golden Nest Poultry',
-            description: 'Premium egg and poultry farm in Limpopo, South Africa',
-            url: 'https://goldennestpoultry.co.za',
-            telephone: '+27-83-353-1044',
-            email: 'info@goldennestpoultry.co.za',
-            address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'Limpopo',
-                addressCountry: 'ZA',
-                addressRegion: 'Limpopo'
-            },
-            geo: {
-                '@type': 'GeoCoordinates',
-                latitude: -23.4012,
-                longitude: 29.4179
-            },
-            openingHours: 'Mo-Fr 08:00-18:00,Sa 08:00-16:00',
-            priceRange: '$$',
-            servesCuisine: 'Farm Fresh Eggs and Poultry'
         }
     }
 }

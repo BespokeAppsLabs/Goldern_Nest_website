@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SEOContent } from "../constants";
+import { organization, localBusiness } from "../constants/structured-data";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components";
+import Script from "next/script";
+import { config } from "@/config/index.ts";
+
 
 export const metadata: Metadata = {
   title: SEOContent.default.title,
@@ -19,7 +23,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://goldennestpoultry.co.za"),
   alternates: {
-    canonical: "/",
+    canonical: "https://goldennestpoultry.co.za",
   },
   openGraph: {
     title: SEOContent.default.title,
@@ -55,7 +59,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: config.google.verification,
   },
 };
 
@@ -70,25 +74,36 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#F97316" />
+        <meta name="theme-color" content="#b99b30" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Location-specific meta tags */}
+        <meta name="geo.region" content="ZA-LP" />
+        <meta name="geo.country" content="South Africa" />
+        <meta name="geo.placename" content="Modimolle, Limpopo" />
+        <meta name="ICBM" content="-24.728667, 28.430778" />
+        <meta name="geo.position" content="-24.728667;28.430778" />
+        <Script type="application/ld+json">
+          {JSON.stringify([organization, localBusiness])}
+        </Script>
       </head>
       <body className="antialiased">
-        {/* Background Logo */}
-      <div className="fixed bottom-4 left-4 z-50">
-         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-        <Image
-          src="/images/logo_transparent.png"
-          alt="Golden Nest Poultry Logo"
-          width={200}
-          height={200}
-          className=" object-contain"
-          priority
-        />
-        </Link>
+        {/* Background Logo - Hidden on mobile to avoid overlap */}
+        <div className="hidden md:fixed md:bottom-4 md:left-4 md:z-50 md:block">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Image
+              src="/images/logo_transparent.png"
+              alt="Golden Nest Poultry Logo"
+              width={200}
+              height={200}
+              className="object-contain"
+              priority
+            />
+          </Link>
+        </div>
         <Navbar />
-      </div>
-        {children}
+        <main className="pt-20 md:pt-24">
+          {children}
+        </main>
       </body>
     </html>
   );

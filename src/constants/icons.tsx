@@ -1,180 +1,201 @@
 import React from 'react';
+import {
+  PiEgg, PiEggCrack, PiSparkle, PiPlant, PiGlobeHemisphereEast,
+  PiTrophy, PiUser, PiMagnifyingGlass, PiThermometer, PiPackage,
+  PiClock, PiSun, PiDrop, PiRecycle, PiTree, PiTruck, PiCalendar,
+  PiDesktop, PiPhone, PiHouse, PiPaintBrush, PiShieldCheck,
+  PiHeartbeat, PiHandshake, PiClipboardText, PiLock, PiHeart,
+  PiMapPin, PiPhoneCall, PiEnvelope, PiClockAfternoon, PiMapTrifold,
+  PiCheckCircle, PiBird, PiLeaf
+} from "react-icons/pi";
 
 // Hero Section Icons
 export const FarmFreshIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="farm fresh">🥚</span>
+  <PiEgg className={className} />
 );
 
 export const HealthyChickensIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="healthy chickens">🐔</span>
+  <PiBird className={className} />
 );
 
 export const TrustedQualityIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="trusted quality">✨</span>
+  <PiSparkle className={className} />
 );
 
 // About Section Icons
 export const FarmFreshGuaranteeIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="farm fresh guarantee">🌾</span>
+  <PiLeaf className={className} />
 );
 
 export const HappyHensIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="happy hens">🐓</span>
+  <PiBird className={className} />
 );
 
 export const SustainablePracticesIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="sustainable practices">🌍</span>
+  <PiGlobeHemisphereEast className={className} />
 );
 
 export const QualityAssuranceIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="quality assurance">🏆</span>
+  <PiTrophy className={className} />
 );
 
 // Team Icons
 export const FarmManagerIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="farm manager">👨‍🌾</span>
+  <PiUser className={className} />
 );
 
 export const QualityControlIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="quality control">👩‍🔬</span>
+  <PiUser className={className} />
 );
 
 export const OperationsIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="operations">👨‍💼</span>
+  <PiUser className={className} />
 );
 
 // Product Benefit Icons
 export const FreeRangeIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="free range">🐓</span>
+  <PiBird className={className} />
 );
 
 export const OrganicIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="organic">🌿</span>
+  <PiLeaf className={className} />
 );
 
 export const ColorfulVarietyIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="colorful variety">🎨</span>
+  <PiPaintBrush className={className} />
 );
 
 // Quality Standards Icons
 export const DailyHealthChecksIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="daily health checks">🔍</span>
+  <PiMagnifyingGlass className={className} />
 );
 
 export const TemperatureControlIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="temperature control">🌡️</span>
+  <PiThermometer className={className} />
 );
 
 export const CarefulPackagingIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="careful packaging">📦</span>
+  <PiPackage className={className} />
 );
 
 export const FreshCollectionIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="fresh collection">⏰</span>
+  <PiClock className={className} />
 );
 
 // Environmental Icons
 export const SolarPoweredIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="solar powered">☀️</span>
+  <PiSun className={className} />
 );
 
 export const RainwaterHarvestingIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="rainwater harvesting">💧</span>
+  <PiDrop className={className} />
 );
 
 export const ZeroWasteIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="zero waste">♻️</span>
+  <PiRecycle className={className} />
 );
 
 export const BiodiversityIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="biodiversity">🌳</span>
+  <PiTree className={className} />
 );
 
 // Service Icons
 export const SameDayDeliveryIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="same day delivery">🚚</span>
+  <PiTruck className={className} />
 );
 
 export const ScheduledDeliveriesIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="scheduled deliveries">📅</span>
+  <PiCalendar className={className} />
 );
 
 export const BulkOrdersIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="bulk orders">📦</span>
+  <PiPackage className={className} />
 );
 
 export const OnlinePlatformIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="online platform">💻</span>
+  <PiDesktop className={className} />
 );
 
 export const PhoneOrdersIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="phone orders">📱</span>
+  <PiPhone className={className} />
 );
 
 export const FarmVisitsIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="farm visits">🏠</span>
+  <PiHouse className={className} />
 );
 
 // Product Feature Icons
 export const PremiumQualityIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="premium quality">🏆</span>
+  <PiTrophy className={className} />
 );
 
 export const ReliableDeliveryIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="reliable delivery">🚚</span>
+  <PiTruck className={className} />
 );
 
 export const SustainableFarmingIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="sustainable farming">🌱</span>
+  <PiLeaf className={className} />
 );
 
 // Quality Content Icons
 export const PoultryHealthIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="poultry health">🏥</span>
+  <PiHeartbeat className={className} />
 );
 
 export const BiosecurityIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="biosecurity">🛡️</span>
+  <PiShieldCheck className={className} />
 );
 
 export const RetailersTrustIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="retailers trust">🤝</span>
+  <PiHandshake className={className} />
 );
 
 export const Iso9001Icon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="ISO 9001">📋</span>
+  <PiClipboardText className={className} />
 );
 
 export const HaccpIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="HACCP">🔒</span>
+  <PiLock className={className} />
 );
 
 export const AnimalWelfareIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="animal welfare">❤️</span>
+  <PiHeart className={className} />
 );
 
 // Contact Icons
 export const LocationIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="location">📍</span>
+  <PiMapPin className={className} />
 );
 
 export const PhoneIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="phone">📞</span>
+  <PiPhoneCall className={className} />
 );
 
 export const EmailIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="email">✉️</span>
+  <PiEnvelope className={className} />
 );
 
 export const BusinessHoursIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="business hours">🕒</span>
+  <PiClockAfternoon className={className} />
 );
 
 export const MapIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="map">🗺️</span>
+  <PiMapTrifold className={className} />
 );
 
 // Success Icon
 export const SuccessIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
-  <span className={className} role="img" aria-label="success">✅</span>
+  <PiCheckCircle className={className} />
+);
+
+export const EggEmoji: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
+  <span className={className} role="img" aria-label="farm fresh">🥚</span>
+);
+
+export const ChickenEmoji: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
+  <span className={className} role="img" aria-label="healthy chickens">🐔</span>
+);
+
+export const StarEmoji: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
+  <span className={className} role="img" aria-label="trusted quality">✨</span>
 );

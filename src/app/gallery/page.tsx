@@ -1,58 +1,45 @@
 import Footer from "../../components/Footer";
 import Image from "next/image";
-import Navbar from "../../components/Navbar";
+import { FocusCards } from "../../components/ui/focus-cards";
 import { GalleryContent } from "../../constants";
 
+// Create cards data for focus cards with expandable behavior
+const createFocusCards = () => {
+  return GalleryContent.categories
+    .filter(category => category !== "All") // Exclude "All" category
+    .map(category => {
+      const categoryData = GalleryContent.categoryGalleries[category as keyof typeof GalleryContent.categoryGalleries];
+      if (!categoryData || !categoryData.images.length) return null;
+
+      const firstImage = categoryData.images[0];
+
+      return {
+        title: categoryData.title,
+        src: firstImage.src,
+        description: category,
+        categoryDescription: categoryData.description,
+        images: categoryData.images,
+      };
+    })
+    .filter((card): card is NonNullable<typeof card> => card !== null); // Remove null entries with proper typing
+};
+
 export default function GalleryPage() {
+  const focusCards = createFocusCards();
+
   return (
     <>
-      
       <main className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-6 text-gray-900">{GalleryContent.title}</h1>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {GalleryContent.subtitle}
-          </p>
+          </p>  
         </div>
 
-        {/* Gallery Categories */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {GalleryContent.categories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                category === "All"
-                  ? "bg-accent-600 text-white shadow-lg"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Gallery Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {GalleryContent.images.map((image) => (
-            <div
-              key={image.id}
-              className="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={600}
-                height={400}
-                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <p className="text-sm font-medium text-accent-300 mb-1">{image.category}</p>
-                <p className="text-sm">{image.alt}</p>
-              </div>
-            </div>
-          ))}
+        {/* Focus Cards with Expandable Behavior */}
+        <div className="mb-16">
+          <FocusCards cards={focusCards} />
         </div>
 
         {/* Farm Story Section */}
@@ -70,14 +57,14 @@ export default function GalleryPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <Image
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+                src="/images/gallary/layer_site.jpeg"
                 alt="Farm operations"
                 width={300}
                 height={200}
                 className="rounded-lg shadow-md"
               />
               <Image
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop"
+                src="/images/gallary/new_house_prep.jpeg"
                 alt="Quality control"
                 width={300}
                 height={200}
@@ -94,12 +81,12 @@ export default function GalleryPage() {
             {GalleryContent.visitInvitation.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button type="button" className="btn-primary">
+            <a href="/contact?type=farm-tour" className="btn-primary inline-block text-center">
               Schedule a Farm Tour
-            </button>
-            <button type="button" className="btn-secondary">
+            </a>
+            <a href="/contact" className="btn-secondary inline-block text-center">
               Contact Us
-            </button>
+            </a>
           </div>
         </section>
       </main>

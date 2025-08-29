@@ -7,14 +7,57 @@ import { FooterContent } from "../constants";
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: "Newsletter Subscriber",
+          email: email,
+          message: `🎉 NEWSLETTER SUBSCRIPTION ALERT! 🎉
+
+A visitor has expressed interest in subscribing to your newsletter!
+
+EMAIL: ${email}
+
+📈 BENEFITS OF CUSTOMER ENGAGEMENT:
+• Build long-term relationships with your customers
+• Keep customers informed about new products and updates
+• Increase customer loyalty and repeat business
+• Direct communication channel for promotions and offers
+• Valuable insights into customer preferences
+• Higher customer lifetime value
+
+This subscriber is interested in staying connected with Golden Nest Farm and receiving updates about your poultry products, farm news, and special offers. You do not have subscribers platform yet.
+
+Don't miss this opportunity to nurture a potential long-term customer relationship!`,
+          phone: ""
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong. Please try again later.');
+      }
+
       setIsSubscribed(true);
       setEmail("");
-      // In a real app, this would send the email to your backend
-      setTimeout(() => setIsSubscribed(false), 3000);
+      setTimeout(() => setIsSubscribed(false), 5000);
+    } catch (error: any) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -30,13 +73,13 @@ export default function Footer() {
               <p>{FooterContent.contact.location}</p>
               <p className="flex items-center gap-2">
                 <span>📞</span>
-                <a href={`tel:${FooterContent.contact.phone}`} className="hover:text-accent-400 transition-colors">
+                <a href={`tel:${FooterContent.contact.phone}`} className="hover:text-primary-400 transition-colors">
                   {FooterContent.contact.phone}
                 </a>
               </p>
               <p className="flex items-center gap-2">
                 <span>✉️</span>
-                <a href={`mailto:${FooterContent.contact.email}`} className="hover:text-accent-400 transition-colors">
+                <a href={`mailto:${FooterContent.contact.email}`} className="hover:text-primary-400 transition-colors">
                   {FooterContent.contact.email}
                 </a>
               </p>
@@ -55,18 +98,23 @@ export default function Footer() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent-500"
+                className="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 required
+                disabled={isLoading}
               />
               <button
                 type="submit"
-                className="bg-accent-600 hover:bg-accent-700 px-6 py-3 rounded-lg text-white font-medium transition-colors hover:scale-105 transform"
+                disabled={isLoading}
+                className="bg-primary-600 hover:bg-primary-700 disabled:bg-gray-600 px-6 py-3 rounded-lg text-white font-medium transition-colors hover:scale-105 transform disabled:hover:scale-100 disabled:cursor-not-allowed"
               >
-                Subscribe
+                {isLoading ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
             {isSubscribed && (
               <p className="text-green-400 text-sm mt-2">Thank you for subscribing!</p>
+            )}
+            {error && (
+              <p className="text-red-400 text-sm mt-2">{error}</p>
             )}
           </div>
 
@@ -81,7 +129,7 @@ export default function Footer() {
                 <button
                   key={social.platform}
                   type="button"
-                  className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent-600 transition-colors hover:scale-110 transform"
+                  className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors hover:scale-110 transform"
                   aria-label={social.platform}
                 >
                   <span className="text-xl">

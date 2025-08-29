@@ -1,20 +1,20 @@
-import { FarmFreshIcon, HealthyChickensIcon, TrustedQualityIcon, FreeRangeIcon, OrganicIcon, ColorfulVarietyIcon, DailyHealthChecksIcon, TemperatureControlIcon, CarefulPackagingIcon, FreshCollectionIcon, SolarPoweredIcon, RainwaterHarvestingIcon, ZeroWasteIcon, BiodiversityIcon, SameDayDeliveryIcon, ScheduledDeliveriesIcon, BulkOrdersIcon, OnlinePlatformIcon, PhoneOrdersIcon, FarmVisitsIcon, PremiumQualityIcon, ReliableDeliveryIcon, SustainableFarmingIcon, PoultryHealthIcon, BiosecurityIcon, RetailersTrustIcon, Iso9001Icon, HaccpIcon, AnimalWelfareIcon } from './icons';
+import { FarmFreshIcon, HealthyChickensIcon, TrustedQualityIcon, FreeRangeIcon, OrganicIcon, ColorfulVarietyIcon, DailyHealthChecksIcon, TemperatureControlIcon, CarefulPackagingIcon, FreshCollectionIcon, SolarPoweredIcon, RainwaterHarvestingIcon, ZeroWasteIcon, BiodiversityIcon, SameDayDeliveryIcon, ScheduledDeliveriesIcon, BulkOrdersIcon, OnlinePlatformIcon, PhoneOrdersIcon, FarmVisitsIcon, PremiumQualityIcon, ReliableDeliveryIcon, SustainableFarmingIcon, PoultryHealthIcon, BiosecurityIcon, RetailersTrustIcon, Iso9001Icon, HaccpIcon, AnimalWelfareIcon, EggEmoji, ChickenEmoji, StarEmoji } from './icons';
 
 export const FeatureContent = {
     hero: {
         highlights: [
             {
-                icon: FarmFreshIcon,
+                icon: EggEmoji,
                 title: 'Farm Fresh Eggs',
                 description: 'Nutritious and delicious eggs sourced directly from our farm.'
             },
             {
-                icon: HealthyChickensIcon,
+                icon: ChickenEmoji,
                 title: 'Healthy Chickens',
                 description: 'Well-cared for poultry raised with natural feed and proper welfare.'
             },
             {
-                icon: TrustedQualityIcon,
+                icon: StarEmoji,
                 title: 'Trusted Quality',
                 description: 'Certified processes ensuring safety and freshness every step of the way.'
             }

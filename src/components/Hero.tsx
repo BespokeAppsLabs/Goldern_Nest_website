@@ -88,82 +88,85 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-between px-6 bg-gradient-to-br from-primary-50 via-accent-50 to-primary-100 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col md:flex-row md:items-center md:justify-between px-4 md:px-6 bg-gradient-to-br from-primary-50 via-accent-50 to-primary-100 overflow-hidden">
       {/* Spotlight gradient background */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-      
-      {/* Background Logo
-      <div className="absolute inset-0 flex items-center justify-center z-0 opacity-10">
-        <Image
-          src="/images/logo_transparent.png"
-          alt="Golden Nest Poultry Logo"
-          width={1500}
-          height={1500}
-          className=" object-contain"
-          priority
-        />
-      </div> */}
-      
-      <div className="container-width relative z-10 flex items-center justify-between">
-        <div ref={scopeRef} className="max-w-lg">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight">
+
+      {/* Content Container */}
+      <div className="container-width relative z-10 flex flex-col md:flex-row md:items-center md:justify-between min-h-screen py-20 md:py-0">
+        {/* Text Content */}
+        <div ref={scopeRef} className="max-w-lg md:max-w-2xl lg:max-w-3xl mb-8 md:mb-0">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight">
             {HeroContent.title.split(',')[0]},{" "}
             <span className="text-gradient">{HeroContent.title.split(',')[1]}</span>
           </h1>
-          <p className="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-gray-700 leading-relaxed max-w-full md:max-w-none">
             {HeroContent.description}
           </p>
-          <button type="button" className="btn-primary" onClick={() => {
-            window.location.href = "/products";
-          }}>
+          <button
+            type="button"
+            className="btn-primary w-full sm:w-auto text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
+            onClick={() => {
+              window.location.href = "/products";
+            }}
+          >
             {HeroContent.cta.primary}
           </button>
         </div>
+
+        {/* 3D Model Display - Desktop */}
+        <div className="hidden md:flex absolute md:relative inset-0 md:inset-auto md:flex-1 items-center justify-center z-0" style={{ width: '100vw', height: '100vh', transform: 'translateZ(0)', willChange: 'transform' }}>
+          <ThreeDErrorBoundary>
+            <Canvas
+              shadows
+              camera={{
+                position: [0, 1.5, 12],
+                fov: 50,
+                near: 0.1,
+                far: 100
+              }}
+            >
+              {/* Enhanced Lighting Setup */}
+              <ambientLight intensity={2} />
+              <directionalLight
+                position={[10, 10, 10]}
+                intensity={1}
+                castShadow
+                shadow-mapSize-width={1024}
+                shadow-mapSize-height={1024}
+              />
+
+              {/* Camera Controls */}
+              <OrbitControls
+                enableZoom={false}
+                enableDamping
+                dampingFactor={0.1}
+                autoRotate
+                autoRotateSpeed={0.5}
+                maxPolarAngle={Math.PI / 2}
+                minPolarAngle={Math.PI / 3}
+              />
+
+              {/* 3D Model */}
+              <ChickenModel />
+            </Canvas>
+          </ThreeDErrorBoundary>
+        </div>
+
+        {/* Mobile 3D Model Placeholder */}
+        <div className="md:hidden w-full h-64 bg-gradient-to-br from-primary-100 to-accent-100 rounded-2xl flex items-center justify-center mb-8">
+          <div className="text-center">
+            <div className="text-4xl mb-4">🐔</div>
+            <p className="text-gray-600 text-sm">Interactive 3D Model</p>
+            <p className="text-gray-500 text-xs mt-1">Available on larger screens</p>
+          </div>
+        </div>
       </div>
 
-      {/* 3D Model Display */}
-      <div className="absolute inset-0 flex items-center justify-center z-0" style={{ width: '100vw', height: '100vh', transform: 'translateZ(0)', willChange: 'transform' }}>
-        <ThreeDErrorBoundary>
-          <Canvas
-            shadows
-            camera={{
-              position: [0, 1.5, 12],
-              fov: 50,
-              near: 0.1,
-              far: 100
-            }}
-          >
-            {/* Enhanced Lighting Setup */}
-            <ambientLight intensity={2} />
-            <directionalLight
-              position={[10, 10, 10]}
-              intensity={1}
-              castShadow
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-            />
-
-            {/* Camera Controls */}
-            <OrbitControls
-              enableZoom={false}
-              enableDamping
-              dampingFactor={0.1}
-              autoRotate
-              autoRotateSpeed={0.5}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 3}
-            />
-
-            {/* 3D Model */}
-            <ChickenModel />
-          </Canvas>
-        </ThreeDErrorBoundary>
-      </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-accent-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-accent-400 rounded-full mt-2 animate-bounce"></div>
+      {/* Decorative elements - Hidden on mobile */}
+      <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <div className="w-6 h-10 border-2 border-primary-400 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-primary-400 rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
     </section>

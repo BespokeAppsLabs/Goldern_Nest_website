@@ -17,6 +17,11 @@ interface EmailTemplateProps {
   email: string;
   message: string;
   phone?: string;
+  formType?: string;
+  preferredDate?: string;
+  groupSize?: string;
+  visitPurpose?: string;
+  specialRequirements?: string;
 }
 
 const main = {
@@ -44,7 +49,7 @@ const text = {
 };
 
 const button = {
-  backgroundColor: '#EA580C',
+  backgroundColor: '#b99b30',
   borderRadius: '8px',
   color: '#fff',
   fontSize: '16px',
@@ -64,10 +69,20 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   email,
   message,
   phone,
+  formType,
+  preferredDate,
+  groupSize,
+  visitPurpose,
+  specialRequirements,
 }) => (
   <Html>
     <Head />
-    <Preview>New message from your Golden Nest contact form</Preview>
+    <Preview>
+      {formType === 'farm-tour'
+        ? 'New farm tour request from Golden Nest website'
+        : 'New message from your Golden Nest contact form'
+      }
+    </Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={{ padding: '20px' }}>
@@ -78,15 +93,51 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
             alt="Golden Nest Logo"
             style={logo}
           />
-          <Heading style={heading}>New Contact Form Submission</Heading>
-          <Text style={text}>You have received a new message from golden nest website contact form.</Text>
+          <Heading style={heading}>
+            {formType === 'farm-tour'
+              ? 'New Farm Tour Request'
+              : 'New Contact Form Submission'
+            }
+          </Heading>
+          <Text style={text}>
+            {formType === 'farm-tour'
+              ? 'You have received a new farm tour request from the Golden Nest website.'
+              : 'You have received a new message from Golden Nest website contact form.'
+            }
+          </Text>
+
           <Section style={{ borderTop: '1px solid #e5e7eb', paddingTop: '20px' }}>
+            {/* Contact Information */}
+            <Text style={{...text, fontWeight: 'bold', marginBottom: '10px'}}>Contact Information:</Text>
             <Text style={text}><strong>Name:</strong> {name}</Text>
             <Text style={text}><strong>Email:</strong> {email}</Text>
             {phone && <Text style={text}><strong>Phone:</strong> {phone}</Text>}
-            <Text style={text}><strong>Message:</strong></Text>
+
+            {/* Farm Tour Information */}
+            {formType === 'farm-tour' && (
+              <>
+                <Text style={{...text, fontWeight: 'bold', marginTop: '20px', marginBottom: '10px'}}>
+                  Farm Tour Details:
+                </Text>
+                {preferredDate && <Text style={text}><strong>Preferred Date:</strong> {preferredDate}</Text>}
+                {groupSize && <Text style={text}><strong>Group Size:</strong> {groupSize}</Text>}
+                {visitPurpose && <Text style={text}><strong>Purpose of Visit:</strong> {visitPurpose}</Text>}
+                {specialRequirements && (
+                  <>
+                    <Text style={text}><strong>Special Requirements:</strong></Text>
+                    <Text style={{...text, fontStyle: 'italic'}}>{specialRequirements}</Text>
+                  </>
+                )}
+              </>
+            )}
+
+            {/* Message */}
+            <Text style={{...text, fontWeight: 'bold', marginTop: '20px', marginBottom: '10px'}}>
+              {formType === 'farm-tour' ? 'Additional Notes:' : 'Message:'}
+            </Text>
             <Text style={text}>{message}</Text>
           </Section>
+
           <Button style={button} href={`mailto:${email}`}>
             Reply to {name}
           </Button>
