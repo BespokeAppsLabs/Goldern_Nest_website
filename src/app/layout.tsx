@@ -88,12 +88,12 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased">
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+        > */}
         {/* Background Logo - Hidden on mobile to avoid overlap */}
         <div className="hidden md:fixed md:bottom-4 md:left-4 md:z-50 md:block">
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
@@ -111,7 +111,7 @@ export default function RootLayout({
         <main className="md:pt-24">
           {children}
         </main>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
