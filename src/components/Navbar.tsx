@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useAnimate } from "motion/react";
 import { NavigationContent } from "../constants/navigation";
 import Image from "next/image";
+import { MenuIcon } from "lucide-react";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true); // Always visible for top navbar
@@ -134,13 +135,14 @@ export default function Navbar() {
         aria-label="Toggle mobile menu"
         aria-expanded={isMobileMenuOpen}
       >
-        <Image
+        {/* <Image
           src="/images/logo_transparent.png"
           alt="Golden Nest Logo"
           className="w-8 h-8 object-contain"
           width={32}
           height={32}
-        />
+        /> */}
+        <MenuIcon className="w-6 h-6 text-gray-600 dark:text-gray-300" />
       </button>
 
       {/* Mobile Menu Overlay */}

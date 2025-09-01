@@ -114,6 +114,16 @@
   .text-gradient {
     @apply bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent;
   }
+
+  /* Hide scrollbar for webkit browsers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
 }
 
 

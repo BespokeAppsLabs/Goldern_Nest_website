@@ -58,24 +58,24 @@ export const AboutContent = {
     ],
     journey: [
         {
-            year: '2015',
-            title: 'Founded as a Small Family Farm',
-            description: 'Started with just 50 chickens and a dream to provide fresh, quality poultry products to our local community.'
+            title: 'Our Beginning',
+            description: 'Golden Nest Poultry was established with a vision to provide families and businesses with poultry products that are both fresh and trustworthy, built on modern farming practices and ethical standards.',
+            image: '/images/gallary/construction.jpeg'
         },
         {
-            year: '2018',
-            title: 'Expanded into Wholesale Egg Supply',
-            description: 'Grew our operations to supply fresh eggs to local retailers and restaurants, maintaining our commitment to quality.'
+            title: 'Rapid Establishment',
+            description: 'We quickly gained recognition as a trusted supplier, building strong relationships with local retailers and restaurants while rapidly scaling our production capacity to meet growing demand.',
+            image: '/images/products/construction_7.jpeg'
         },
         {
-            year: '2021',
-            title: 'Introduced Modern Facilities and Certifications',
-            description: 'Invested in state-of-the-art facilities and obtained industry certifications to ensure the highest standards of safety and quality.'
+            title: 'Production Excellence',
+            description: 'We proudly maintain an impressive daily production capacity of 25,000 eggs, serving over 100 clients across Limpopo with consistently premium poultry products.',
+            image: '/images/egg-heap.jpg'
         },
         {
-            year: '2024',
-            title: 'Leading Poultry Supplier in Limpopo',
-            description: 'Now serving over 100 clients across Limpopo with daily production of 5000+ eggs and premium poultry products.'
+            title: 'Future Growth',
+            description: 'Currently undergoing major facility expansion to meet increasing demand and further enhance our sustainable farming capabilities for continued excellence.',
+            image: '/images/gallary/future.jpeg'
         }
     ],
     team: [
@@ -131,47 +131,41 @@ export const OurProductsContent = {
     subtitle: 'From eggs to live chickens, we supply premium poultry products for homes, retailers, and businesses',
     description: 'Each product is carefully selected and processed to meet our high standards of quality and safety.',
     products: [
-        {
-            name: 'Fresh Eggs',
-            subtitle: 'Large, medium, and small eggs packed with nutrition',
-            description: 'Our hens are fed a natural grain-based diet, ensuring rich, flavorful eggs with bright orange yolks. Available in various sizes and quantities.',
-            price: 'R45/dozen',
-            image: '/images/hero/eggs/eggTray.jpg',
-            featured: true
+           {
+            name: 'Organic Eggs',
+            subtitle: 'Premium organic eggs from free-range hens',
+            description: 'These eggs come from chickens that are fed certified organic feed, resulting in superior taste and nutritional value.',
+            image: '/images/egg_collection.jpg'
         },
         {
             name: 'Broiler Chickens',
             subtitle: 'Healthy and well-fed chickens, ideal for commercial and home use',
             description: 'Raised with care and fed premium feed for optimal growth and taste. Available in various weights and processing options.',
-            price: 'R120/kg',
             image: '/images/hero/boilers/boiler_chickens.jpg'
         },
         {
             name: 'Layer Chickens',
             subtitle: 'Strong layers producing high-quality eggs consistently',
             description: 'These hens are specifically bred and raised for egg production, ensuring reliable daily egg output for your business needs.',
-            price: 'R180 each',
             image: '/images/hero/layers/laying-hens.jpg'
         },
         {
-            name: 'Organic Eggs',
-            subtitle: 'Premium organic eggs from free-range hens',
-            description: 'These eggs come from chickens that are fed certified organic feed, resulting in superior taste and nutritional value.',
-            price: 'R65/dozen',
-            image: '/images/egg_collection.jpg'
+            name: 'Organic Compose Pallet',
+            subtitle: 'Organic compost pallet for your garden',
+            description: 'Our compost pallet is made from organic materials and is perfect for your gardens and farms',
+            image: '/images/chicken-pallet.jpeg',
+            featured: true
         },
         {
             name: 'Day-Old Chicks',
             subtitle: 'Healthy day-old chicks for those looking to start their own poultry operation',
             description: 'We provide both broiler and layer chicks, all vaccinated and ready for your farm.',
-            price: 'R25 each',
             image: '/images/gallary/chick_house_2.jpg'
         },
         {
             name: 'Bulk Orders',
             subtitle: 'Special pricing for bulk orders and wholesale customers',
             description: 'We offer competitive rates for restaurants, retailers, and distributors looking for consistent supply.',
-            price: 'Contact us',
             image: '/images/products/factory.jpeg'
         }
     ],
@@ -229,11 +223,7 @@ export const QualityContent = {
     description: 'We follow rigorous quality checks and maintain industry certifications to keep our poultry safe and healthy. Our commitment to excellence ensures that every product meets the highest standards.',
     stats: [
         {
-            number: '10+',
-            label: 'Years Experience'
-        },
-        {
-            number: '5000+',
+            number: '25000+',
             label: 'Eggs Daily'
         },
         {
@@ -260,12 +250,12 @@ export const QualityContent = {
             description: 'Over 100 retailers and restaurants trust us for consistent quality and reliable supply.',
             icon: '🤝'
         },
-        {
-            id: 'iso-9001',
-            title: 'ISO 9001 Quality Management',
-            description: 'Our quality management system is certified to international standards.',
-            icon: '📋'
-        },
+        // {
+        //     id: 'iso-9001',
+        //     title: 'ISO 9001 Quality Management',
+        //     description: 'Our quality management system is certified to international standards.',
+        //     icon: '📋'
+        // },
         {
             id: 'haccp',
             title: 'HACCP Food Safety Certified',
@@ -330,7 +320,7 @@ export const QualityContent = {
         {
             id: 'certifications',
             question: 'What certifications do you hold?',
-            answer: 'We maintain multiple certifications including ISO 9001, HACCP, and local food safety standards. All certifications are regularly audited and renewed.'
+            answer: 'We maintain multiple certifications including HACCP, and local food safety standards. All certifications are regularly audited and renewed.'
         }
     ],
     farmStandards: [

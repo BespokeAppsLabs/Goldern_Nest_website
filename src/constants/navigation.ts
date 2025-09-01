@@ -75,9 +75,9 @@ export const FooterContent = {
         { label: 'Delivery', href: '/contact' }
     ],
     contact: {
-        phone: '083 353 1044',
+        phone: '064 536 8537',
         email: 'info@goldennestpoultry.co.za',
-        location: 'Limpopo, South Africa',
+        location: 'Modimolle, Limpopo, South Africa',
         hours: 'Mon-Fri: 8AM-6PM, Sat: 8AM-4PM'
     },
     social: [

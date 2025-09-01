@@ -18,8 +18,8 @@ export default function QualityPage() {
         </div>
 
         {/* Quality Counters */}
-        <section className="mb-12 md:mb-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 text-center">
+        <section className="mb-12 md:mb-16 flex justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 text-center justify-center">
             {QualityContent.stats.map((stat) => (
               <div key={stat.label} className="p-6 md:p-8 bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl shadow-md">
                 <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-600 mb-2">{stat.number}</div>

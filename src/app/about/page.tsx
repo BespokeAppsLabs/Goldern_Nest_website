@@ -1,7 +1,7 @@
-import { AnimatedRooster } from "@/models";
-import { Footer, ModelDisplay, Navbar } from "../../components";
+import { Footer } from "../../components";
 import { AboutContent } from "../../constants";
 import Image from "next/image";
+import { StickyScroll } from "../../components/ui/sticky-scroll-reveal";
 
 export default function AboutPage() {
   return (
@@ -46,22 +46,25 @@ export default function AboutPage() {
           </div>
         </section> */}
 
-        {/* Journey Timeline */}
+        {/* Journey Section with Sticky Scroll */}
         <section className="mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 text-center text-gray-900">Our Journey</h2>
-          <div className="space-y-6 md:space-y-8">
-            {AboutContent.journey.map((milestone) => (
-              <div key={milestone.year} className="flex items-start gap-4 md:gap-6">
-                <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-base md:text-xl font-bold">
-                  {milestone.year}
-                </div>
-                <div className="pt-1 md:pt-2">
-                  <h3 className="text-lg md:text-xl font-semibold mb-1 md:mb-2 text-gray-900">{milestone.title}</h3>
-                  <p className="text-sm md:text-base text-gray-700">{milestone.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <StickyScroll
+            content={AboutContent.journey.map((milestone) => ({
+              title: milestone.title,
+              description: milestone.description,
+              content: milestone.image ? (
+                <Image
+                  src={milestone.image}
+                  alt={milestone.title}
+                  width={400}
+                  height={300}
+                  className="object-cover w-full h-full rounded-md"
+                />
+              ) : null,
+            }))}
+            contentClassName="h-80 w-96"
+          />
         </section>
 
         {/* Team Section */}
