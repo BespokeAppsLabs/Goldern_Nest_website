@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRef } from 'react';
-import { useFrame, useThree } from '@react-three/fiber';
 import { Detailed } from '@react-three/drei';
-import { Group } from 'three';
+import { useFrame, useThree } from '@react-three/fiber';
+import { useRef } from 'react';
+import type { Group } from 'three';
 
 interface ModelLODProps {
   position: [number, number, number];
@@ -11,7 +11,11 @@ interface ModelLODProps {
   lowDetail: React.ComponentType<any>;
 }
 
-export function ModelLOD({ position, highDetail: HighDetail, lowDetail: LowDetail }: ModelLODProps) {
+export function ModelLOD({
+  position,
+  highDetail: HighDetail,
+  lowDetail: LowDetail,
+}: ModelLODProps) {
   const groupRef = useRef<Group>(null);
   const { camera } = useThree();
 

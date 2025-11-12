@@ -1,34 +1,73 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
+  "$schema": "https://biomejs.dev/schemas/2.2.6/schema.json",
   "files": {
-    "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    "includes": [
+      "**",
+      "!**/routeTree.gen.ts",
+      "!**/.claude/**",
+      "!**/.sst/**",
+      "!**/.gkm/**",
+      "!**/.expo/**",
+      "!**/coverage/*",
+      "!packages/client/src/index.ts",
+      "!**/expo-env.d.ts",
+      "!**/.turbo/**",
+      "!**/dist/**",
+      "!**/ios/**",
+      "!**/android/**",
+      "!**/.next/**",
+      "!**/packages/client/**"
+    ],
+    "maxSize": 2000000
   },
   "formatter": {
     "enabled": true,
+    "formatWithErrors": false,
     "indentStyle": "space",
-    "indentWidth": 2
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto"
   },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
-    },
-    "domains": {
-      "next": "recommended",
-      "react": "recommended"
-    }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
+      "recommended": false,
+      "complexity": { "noForEach": "off", "noUselessFragments": "off" },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "useJsxKeyInIterable": "off",
+        "noUnusedImports": "error",
+        "noUnusedLabels": "off",
+        "noUnusedPrivateClassMembers": "off",
+        "noUnusedVariables": "off"
+      },
+      "style": {
+        "useImportType": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noConsole": { "level": "off", "options": { "allow": ["log"] } }
       }
     }
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "enabled": true,
+      "quoteStyle": "single",
+      "attributePosition": "auto"
+    }
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git"
   }
 }

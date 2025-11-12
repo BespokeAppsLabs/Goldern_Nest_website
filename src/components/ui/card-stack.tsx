@@ -1,6 +1,6 @@
-"use client";
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+'use client';
+import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
 
 let interval: any;
 
@@ -47,7 +47,7 @@ export const CardStack = ({
             key={card.id}
             className="absolute dark:bg-black bg-white h-60 w-60 md:h-60 md:w-96 rounded-3xl p-4 shadow-xl border border-neutral-200 dark:border-white/[0.1]  shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col justify-between"
             style={{
-              transformOrigin: "top center",
+              transformOrigin: 'top center',
             }}
             animate={{
               top: index * -CARD_OFFSET,

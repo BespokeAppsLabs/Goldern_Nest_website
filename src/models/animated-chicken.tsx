@@ -6,11 +6,11 @@ Source: https://sketchfab.com/3d-models/chicken-rig-b92464211274439b955700e3aa5c
 Title: Chicken Rig
 */
 
-'use client'
+'use client';
 
-import { useRef, useEffect } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
-import { Group } from 'three'
+import { useAnimations, useGLTF } from '@react-three/drei';
+import { useEffect, useRef } from 'react';
+import type { Group } from 'three';
 
 // 3D Model from: https://sketchfab.com/3d-models/chicken-rig-b92464211274439b955700e3aa5c321f
 interface AnimatedChickenProps {
@@ -18,7 +18,10 @@ interface AnimatedChickenProps {
   [key: string]: unknown;
 }
 
-export function AnimatedChicken({ currentAnimation = 'walk', ...props }: AnimatedChickenProps) {
+export function AnimatedChicken({
+  currentAnimation = 'walk',
+  ...props
+}: AnimatedChickenProps) {
   const group = useRef<Group>(null);
 
   // Load the 3D model and animations from the provided GLTF file
@@ -54,7 +57,11 @@ export function AnimatedChicken({ currentAnimation = 'walk', ...props }: Animate
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={0.011}>
+        <group
+          name="Sketchfab_model"
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={0.011}
+        >
           <group name="ChickenFBX" rotation={[Math.PI / 2, 0, 0]}>
             <group name="Object_2">
               <group name="RootNode">
@@ -75,8 +82,8 @@ export function AnimatedChicken({ currentAnimation = 'walk', ...props }: Animate
         </group>
       </group>
     </group>
-  )
+  );
 }
 
 // Preload model for performance
-useGLTF.preload('/3d/animated-chicken.glb')
+useGLTF.preload('/3d/animated-chicken.glb');

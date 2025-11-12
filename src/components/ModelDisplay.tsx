@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
 
 interface ModelDisplayProps {
   children: React.ReactNode;
@@ -14,10 +14,10 @@ interface ModelDisplayProps {
 
 export function ModelDisplay({
   children,
-  className = "w-full h-[300px]",
+  className = 'w-full h-[300px]',
   enableControls = false,
   autoRotate = true,
-  scale = 0.5
+  scale = 0.5,
 }: ModelDisplayProps) {
   return (
     <div className={className}>
@@ -26,9 +26,7 @@ export function ModelDisplay({
           <ambientLight intensity={0.6} />
           <directionalLight position={[10, 10, 5]} intensity={1} />
 
-          <group scale={[scale, scale, scale]}>
-            {children}
-          </group>
+          <group scale={[scale, scale, scale]}>{children}</group>
 
           {enableControls && (
             <OrbitControls

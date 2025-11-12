@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Footer, ProductCard } from "../../components";
-import { OurProductsContent } from "../../constants";
-import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useRouter } from 'next/navigation';
+import { useCallback } from 'react';
+import { Footer, ProductCard } from '../../components';
+import { OurProductsContent } from '../../constants';
 
 export default function ProductsPage() {
   const router = useRouter();
@@ -22,10 +22,11 @@ export default function ProductsPage() {
   }, [router]);
   return (
     <>
-      
       <main className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">{OurProductsContent.title}</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
+            {OurProductsContent.title}
+          </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
             {OurProductsContent.description}
           </p>
@@ -64,7 +65,7 @@ export default function ProductsPage() {
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {OurProductsContent.products.map((product) => (
-            <ProductCard 
+            <ProductCard
               key={product.name}
               title={product.name}
               description={product.description}
@@ -75,15 +76,21 @@ export default function ProductsPage() {
 
         {/* Product Features */}
         <section className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-2xl p-6 md:p-12 mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 text-center text-gray-900">Why Choose Our Products?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 text-center text-gray-900">
+            Why Choose Our Products?
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {OurProductsContent.features.map((feature) => (
               <div key={feature.title} className="text-center">
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-lg md:text-2xl mx-auto mb-3 md:mb-4">
                   <feature.icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-900">{feature.title}</h3>
-                <p className="text-sm md:text-base text-gray-700">{feature.description}</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-900">
+                  {feature.title}
+                </h3>
+                <p className="text-sm md:text-base text-gray-700">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
@@ -91,10 +98,13 @@ export default function ProductsPage() {
 
         {/* Order Information */}
         <section className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6 text-gray-900">Ready to Order?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6 text-gray-900">
+            Ready to Order?
+          </h2>
           <p className="text-base md:text-lg text-gray-700 mb-6 md:mb-8 max-w-2xl mx-auto px-4 md:px-0">
-            Contact us to discuss your requirements, get pricing information, or place an order.
-            We're here to help you find the perfect poultry solution for your needs.
+            Contact us to discuss your requirements, get pricing information, or
+            place an order. We're here to help you find the perfect poultry
+            solution for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4 md:px-0">
             <button

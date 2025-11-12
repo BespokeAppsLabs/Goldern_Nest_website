@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -20,7 +20,8 @@ const nextConfig: NextConfig = {
     ],
   },
   env: {
-    NEXT_PUBLIC_GOOGLE_VERIFICATION: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    NEXT_PUBLIC_GOOGLE_VERIFICATION:
+      process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
     // NEXT_PUBLIC_GOOGLE_MAPS: process.env.NEXT_PUBLIC_GOOGLE_MAPS,
     // NEXT_PUBLIC_GOOGLE_RECAPTCHA: process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA,
     RESEND_API_KEY: process.env.RESEND_API_KEY,

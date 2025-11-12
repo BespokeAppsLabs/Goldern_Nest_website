@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { type NextRequest, NextResponse } from 'next/server';
 import React from 'react';
+import { Resend } from 'resend';
 import { EmailTemplate } from '../../../components/EmailTemplate';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     preferredDate,
     groupSize,
     visitPurpose,
-    specialRequirements
+    specialRequirements,
   } = await req.json();
 
   console.log('Received request with data:', {
@@ -27,19 +27,19 @@ export async function POST(req: NextRequest) {
     preferredDate,
     groupSize,
     visitPurpose,
-    specialRequirements
+    specialRequirements,
   });
 
   try {
     console.log('Attempting to send email via Resend...');
-    const subject = formType === 'farm-tour'
-      ? 'New Farm Tour Request from Golden Nest Website'
-      : 'New Message from Golden Nest Contact Form';
+    const subject =
+      formType === 'farm-tour'
+        ? 'New Farm Tour Request from Golden Nest Website'
+        : 'New Message from Golden Nest Contact Form';
 
     const { data, error } = await resend.emails.send({
       from: 'Golden Nest <onboarding@resend.dev>',
-      //TODO!: Change to the actual email address
-      to: ['thereshi.l@gmail.com'],
+      to: ['info@goldennestpoultry.co.za'],
       subject,
       react: React.createElement(EmailTemplate, {
         name,
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
         preferredDate,
         groupSize,
         visitPurpose,
-        specialRequirements
+        specialRequirements,
       }),
     });
 

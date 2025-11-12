@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import { FooterContent } from "../constants";
+import Image from 'next/image';
+import { useState } from 'react';
+import { FooterContent } from '../constants';
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +24,7 @@ export default function Footer() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: "Newsletter Subscriber",
+          name: 'Newsletter Subscriber',
           email: email,
           message: `🎉 NEWSLETTER SUBSCRIPTION ALERT! 🎉
 
@@ -43,7 +43,7 @@ EMAIL: ${email}
 This subscriber is interested in staying connected with Golden Nest Farm and receiving updates about your poultry products, farm news, and special offers. You do not have subscribers platform yet.
 
 Don't miss this opportunity to nurture a potential long-term customer relationship!`,
-          phone: ""
+          phone: '',
         }),
       });
 
@@ -52,7 +52,7 @@ Don't miss this opportunity to nurture a potential long-term customer relationsh
       }
 
       setIsSubscribed(true);
-      setEmail("");
+      setEmail('');
       setTimeout(() => setIsSubscribed(false), 5000);
     } catch (error: any) {
       setError(error.message);
@@ -67,19 +67,24 @@ Don't miss this opportunity to nurture a potential long-term customer relationsh
         <div className="grid md:grid-cols-3 gap-12">
           {/* Company Info */}
           <div>
-            
             <div className="space-y-3 text-gray-300">
               <p>{FooterContent.company.tagline}</p>
               <p>{FooterContent.contact.location}</p>
               <p className="flex items-center gap-2">
                 <span>📞</span>
-                <a href={`tel:${FooterContent.contact.phone}`} className="hover:text-primary-400 transition-colors">
+                <a
+                  href={`tel:${FooterContent.contact.phone}`}
+                  className="hover:text-primary-400 transition-colors"
+                >
                   {FooterContent.contact.phone}
                 </a>
               </p>
               <p className="flex items-center gap-2">
                 <span>✉️</span>
-                <a href={`mailto:${FooterContent.contact.email}`} className="hover:text-primary-400 transition-colors">
+                <a
+                  href={`mailto:${FooterContent.contact.email}`}
+                  className="hover:text-primary-400 transition-colors"
+                >
                   {FooterContent.contact.email}
                 </a>
               </p>
@@ -111,11 +116,11 @@ Don't miss this opportunity to nurture a potential long-term customer relationsh
               </button>
             </form>
             {isSubscribed && (
-              <p className="text-green-400 text-sm mt-2">Thank you for subscribing!</p>
+              <p className="text-green-400 text-sm mt-2">
+                Thank you for subscribing!
+              </p>
             )}
-            {error && (
-              <p className="text-red-400 text-sm mt-2">{error}</p>
-            )}
+            {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
           </div>
 
           {/* Social Links */}
@@ -142,13 +147,21 @@ Don't miss this opportunity to nurture a potential long-term customer relationsh
           </div> */}
 
           <div className="flex justify-center items-center">
-              <Image src="/images/BRAND_LOGO.png" alt="Golden Nest Logo" width={250} height={250} />
+            <Image
+              src="/images/BRAND_LOGO.png"
+              alt="Golden Nest Logo"
+              width={250}
+              height={250}
+            />
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} {FooterContent.company.name}. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} {FooterContent.company.name}. All
+            rights reserved.
+          </p>
         </div>
       </div>
     </footer>

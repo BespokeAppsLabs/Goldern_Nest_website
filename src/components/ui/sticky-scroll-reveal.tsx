@@ -1,8 +1,8 @@
-"use client";
-import React, { useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
+'use client';
+import { motion, useMotionValueEvent, useScroll } from 'motion/react';
+import type React from 'react';
+import { useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 export const StickyScroll = ({
   content,
@@ -21,14 +21,14 @@ export const StickyScroll = ({
     // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
     // target: ref
     container: ref,
-    offset: ["start start", "end end"],
+    offset: ['start start', 'end end'],
   });
   const cardLength = content.length;
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     // Create breakpoints that include 0 and approach 1.0 for better distribution
     const cardsBreakpoints = content.map((_, index) =>
-      index === cardLength - 1 ? 0.99 : index / (cardLength - 1)
+      index === cardLength - 1 ? 0.99 : index / (cardLength - 1),
     );
 
     const closestBreakpointIndex = cardsBreakpoints.reduce(
@@ -43,9 +43,6 @@ export const StickyScroll = ({
     );
     setActiveCard(closestBreakpointIndex);
   });
-
-
-
 
   return (
     <motion.div
@@ -88,7 +85,7 @@ export const StickyScroll = ({
       </div>
       <div
         className={cn(
-          "sticky top-10 hidden h-64 w-80 md:w-96 overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 lg:block bg-card",
+          'sticky top-10 hidden h-64 w-80 md:w-96 overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 lg:block bg-card',
           contentClassName,
         )}
       >

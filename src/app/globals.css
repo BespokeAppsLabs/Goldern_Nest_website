@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,14 +8,19 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.6;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
   }
   :root {
@@ -81,11 +86,11 @@
   .btn-secondary {
     @apply bg-primary-100 text-primary-800 px-4 md:px-6 py-3 md:py-4 rounded-lg hover:scale-105 active:scale-95 transition-transform duration-300 font-medium min-h-[44px] md:min-h-[48px] touch-manipulation;
   }
-  
+
   .card {
     @apply bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300;
   }
-  
+
   .section-padding {
     @apply py-12 md:py-16 lg:py-20 px-4 md:px-6;
   }
@@ -117,16 +122,14 @@
 
   /* Hide scrollbar for webkit browsers */
   .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .scrollbar-hide::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari and Opera */
+    display: none; /* Chrome, Safari and Opera */
   }
 }
-
-
 
 @layer base {
   * {

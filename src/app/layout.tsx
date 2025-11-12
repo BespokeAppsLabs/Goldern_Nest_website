@@ -1,49 +1,48 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { SEOContent } from "../constants";
-import { organization, localBusiness } from "../constants/structured-data";
-import Image from "next/image";
-import Link from "next/link";
-import { Navbar } from "@/components";
-import Script from "next/script";
-import { config } from "@/config/index.ts";
-import { ThemeProvider } from "@/components/theme-provider";
-
+import type { Metadata } from 'next';
+import './globals.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import Script from 'next/script';
+import { Navbar } from '@/components';
+import { ThemeProvider } from '@/components/theme-provider';
+import { config } from '@/config/index.ts';
+import { SEOContent } from '../constants';
+import { localBusiness, organization } from '../constants/structured-data';
 
 export const metadata: Metadata = {
   title: SEOContent.default.title,
   description: SEOContent.default.description,
   keywords: SEOContent.default.keywords,
-  authors: [{ name: "Golden Nest Poultry" }],
-  creator: "Golden Nest Poultry",
-  publisher: "Golden Nest Poultry",
+  authors: [{ name: 'Golden Nest Poultry' }],
+  creator: 'Golden Nest Poultry',
+  publisher: 'Golden Nest Poultry',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://goldennestpoultry.co.za"),
+  metadataBase: new URL('https://goldennestpoultry.co.za'),
   alternates: {
-    canonical: "https://goldennestpoultry.co.za",
+    canonical: 'https://goldennestpoultry.co.za',
   },
   openGraph: {
     title: SEOContent.default.title,
     description: SEOContent.default.description,
-    url: "https://goldennestpoultry.co.za",
-    siteName: "Golden Nest Poultry",
+    url: 'https://goldennestpoultry.co.za',
+    siteName: 'Golden Nest Poultry',
     images: [
       {
         url: SEOContent.default.ogImage,
         width: 1200,
         height: 630,
-        alt: "Golden Nest Poultry Farm",
+        alt: 'Golden Nest Poultry Farm',
       },
     ],
-    locale: "en_ZA",
-    type: "website",
+    locale: 'en_ZA',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: SEOContent.default.title,
     description: SEOContent.default.description,
     images: [SEOContent.default.twitterImage],
@@ -54,9 +53,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   verification: {
@@ -71,7 +70,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-   
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -96,7 +94,10 @@ export default function RootLayout({
         > */}
         {/* Background Logo - Hidden on mobile to avoid overlap */}
         <div className="hidden md:fixed md:bottom-4 md:left-4 md:z-50 md:block">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Link
+            href="/"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+          >
             <Image
               src="/images/logo_transparent.png"
               alt="Golden Nest Poultry Logo"
@@ -108,9 +109,7 @@ export default function RootLayout({
           </Link>
         </div>
         <Navbar />
-        <main className="md:pt-24">
-          {children}
-        </main>
+        <main className="md:pt-24">{children}</main>
         {/* </ThemeProvider> */}
       </body>
     </html>

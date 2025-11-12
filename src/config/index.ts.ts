@@ -1,7 +1,7 @@
-import { google } from "./google";
-import { resend } from "./resend";
+import { google } from './google';
+import { resend } from './resend';
 
 export const config = {
-    google,
-    resend,
-}
+  google,
+  resend,
+};

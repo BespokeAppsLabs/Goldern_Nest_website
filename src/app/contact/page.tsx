@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Footer from "../../components/Footer";
-import { useState, useEffect } from "react";
-import { ContactContent } from "../../constants";
+import { useEffect, useState } from 'react';
+import Footer from '../../components/Footer';
+import { ContactContent } from '../../constants';
 
 export default function ContactPage() {
   const [isFarmTour, setIsFarmTour] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    phone: "",
+    name: '',
+    email: '',
+    message: '',
+    phone: '',
     // Farm tour specific fields
-    preferredDate: "",
-    groupSize: "",
-    visitPurpose: "",
-    specialRequirements: ""
+    preferredDate: '',
+    groupSize: '',
+    visitPurpose: '',
+    specialRequirements: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +27,6 @@ export default function ContactPage() {
     const type = urlParams.get('type');
     setIsFarmTour(type === 'farm-tour');
   }, []);
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +41,7 @@ export default function ContactPage() {
         },
         body: JSON.stringify({
           ...formData,
-          formType: isFarmTour ? 'farm-tour' : 'contact'
+          formType: isFarmTour ? 'farm-tour' : 'contact',
         }),
       });
 
@@ -52,36 +51,45 @@ export default function ContactPage() {
 
       setIsSubmitted(true);
       setFormData({
-        name: "",
-        email: "",
-        message: "",
-        phone: "",
-        preferredDate: "",
-        groupSize: "",
-        visitPurpose: "",
-        specialRequirements: ""
+        name: '',
+        email: '',
+        message: '',
+        phone: '',
+        preferredDate: '',
+        groupSize: '',
+        visitPurpose: '',
+        specialRequirements: '',
       });
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : 'Something went wrong. Please try again later.');
+      setError(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong. Please try again later.',
+      );
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
       setTimeout(() => setIsSubmitted(false), 5000);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
     <>
-      
       <main className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">{ContactContent.title}</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
+            {ContactContent.title}
+          </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
             {ContactContent.subtitle}
           </p>
@@ -91,25 +99,29 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 text-gray-900">
-              {isFarmTour ? "Schedule Your Farm Tour" : "Send us a Message"}
+              {isFarmTour ? 'Schedule Your Farm Tour' : 'Send us a Message'}
             </h2>
             {isSubmitted ? (
               <div className="p-4 md:p-6 bg-green-50 border border-green-200 rounded-2xl text-center">
                 <div className="text-3xl md:text-4xl mb-3 md:mb-4">✅</div>
                 <h3 className="text-lg md:text-xl font-semibold text-green-800 mb-2">
-                  {isFarmTour ? "Farm Tour Request Sent Successfully!" : "Message Sent Successfully!"}
+                  {isFarmTour
+                    ? 'Farm Tour Request Sent Successfully!'
+                    : 'Message Sent Successfully!'}
                 </h3>
                 <p className="text-green-700 text-sm md:text-base">
                   {isFarmTour
                     ? "Thank you for your interest in visiting our farm! We'll contact you within 24 hours to confirm your tour details."
-                    : "Thank you for contacting us. We'll get back to you within 24 hours."
-                  }
+                    : "Thank you for contacting us. We'll get back to you within 24 hours."}
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Full Name *
                   </label>
                   <input
@@ -125,7 +137,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Email Address *
                   </label>
                   <input
@@ -141,7 +156,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Phone Number
                   </label>
                   <input
@@ -159,7 +177,10 @@ export default function ContactPage() {
                   <>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div>
-                        <label htmlFor="preferredDate" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label
+                          htmlFor="preferredDate"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
                           Preferred Tour Date *
                         </label>
                         <input
@@ -174,7 +195,10 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label htmlFor="groupSize" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label
+                          htmlFor="groupSize"
+                          className="block text-sm font-medium text-gray-700 mb-2"
+                        >
                           Group Size *
                         </label>
                         <select
@@ -195,7 +219,10 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="visitPurpose" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="visitPurpose"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Purpose of Visit *
                       </label>
                       <select
@@ -207,7 +234,9 @@ export default function ContactPage() {
                         className="w-full px-4 py-3 md:py-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       >
                         <option value="">Select purpose</option>
-                        <option value="educational">Educational Visit (School/University)</option>
+                        <option value="educational">
+                          Educational Visit (School/University)
+                        </option>
                         <option value="business">Business Partnership</option>
                         <option value="personal">Personal Interest</option>
                         <option value="media">Media/Photography</option>
@@ -217,7 +246,10 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="specialRequirements" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="specialRequirements"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Special Requirements or Dietary Restrictions
                       </label>
                       <textarea
@@ -234,8 +266,11 @@ export default function ContactPage() {
                 )}
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    {isFarmTour ? "Additional Message" : "Message *"}
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    {isFarmTour ? 'Additional Message' : 'Message *'}
                   </label>
                   <textarea
                     id="message"
@@ -247,8 +282,8 @@ export default function ContactPage() {
                     className="w-full px-4 py-3 md:py-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent resize-none"
                     placeholder={
                       isFarmTour
-                        ? "Any additional information about your visit or questions you have"
-                        : "Tell us about your inquiry, order, or partnership request"
+                        ? 'Any additional information about your visit or questions you have'
+                        : 'Tell us about your inquiry, order, or partnership request'
                     }
                   />
                 </div>
@@ -258,17 +293,27 @@ export default function ContactPage() {
                   disabled={isLoading}
                   className="w-full btn-primary py-3 md:py-4 text-base md:text-lg min-h-[48px] touch-manipulation"
                 >
-                  {isLoading ? 'Sending...' : (isFarmTour ? 'Schedule Tour' : 'Send Message')}
+                  {isLoading
+                    ? 'Sending...'
+                    : isFarmTour
+                      ? 'Schedule Tour'
+                      : 'Send Message'}
                 </button>
 
-                {error && <p className="text-red-500 mt-3 md:mt-4 text-sm md:text-base">{error}</p>}
+                {error && (
+                  <p className="text-red-500 mt-3 md:mt-4 text-sm md:text-base">
+                    {error}
+                  </p>
+                )}
               </form>
             )}
           </div>
 
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 text-gray-900">Contact Information</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 text-gray-900">
+              Contact Information
+            </h2>
             <div className="space-y-4 md:space-y-6">
               <div className="p-4 md:p-6 bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl">
                 <a
@@ -279,9 +324,15 @@ export default function ContactPage() {
                 >
                   <div className="text-xl md:text-2xl">📍</div>
                   <div>
-                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2 group-hover:text-primary-700 transition-colors">Farm Location</h3>
-                    <p className="text-sm md:text-base text-gray-700 group-hover:text-gray-800 transition-colors">{ContactContent.contactInfo.location}</p>
-                    <p className="text-xs text-primary-600 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Click to view on Google Maps ↗</p>
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2 group-hover:text-primary-700 transition-colors">
+                      Farm Location
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-700 group-hover:text-gray-800 transition-colors">
+                      {ContactContent.contactInfo.location}
+                    </p>
+                    <p className="text-xs text-primary-600 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Click to view on Google Maps ↗
+                    </p>
                   </div>
                 </a>
               </div>
@@ -290,15 +341,22 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3 md:gap-4">
                   <div className="text-xl md:text-2xl">📞</div>
                   <div>
-                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2">Phone</h3>
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2">
+                      Phone
+                    </h3>
                     {ContactContent.contactInfo.phone.map((phone) => (
                       <div key={phone}>
-                        <a href={`tel:${phone}`} className="text-primary-600 hover:text-primary-700 font-medium text-sm md:text-base">
+                        <a
+                          href={`tel:${phone}`}
+                          className="text-primary-600 hover:text-primary-700 font-medium text-sm md:text-base"
+                        >
                           {phone}
                         </a>
                       </div>
                     ))}
-                    <p className="text-xs md:text-sm text-gray-600 mt-1">Available Mon-Fri, 8AM-6PM</p>
+                    <p className="text-xs md:text-sm text-gray-600 mt-1">
+                      Available Mon-Fri, 8AM-6PM
+                    </p>
                   </div>
                 </div>
               </div>
@@ -307,11 +365,18 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3 md:gap-4">
                   <div className="text-xl md:text-2xl">✉️</div>
                   <div>
-                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2">Email</h3>
-                    <a href={`mailto:${ContactContent.contactInfo.email}`} className="text-primary-600 hover:text-primary-700 font-medium text-sm md:text-base break-all">
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2">
+                      Email
+                    </h3>
+                    <a
+                      href={`mailto:${ContactContent.contactInfo.email}`}
+                      className="text-primary-600 hover:text-primary-700 font-medium text-sm md:text-base break-all"
+                    >
                       {ContactContent.contactInfo.email}
                     </a>
-                    <p className="text-xs md:text-sm text-gray-600 mt-1">We respond within 24 hours</p>
+                    <p className="text-xs md:text-sm text-gray-600 mt-1">
+                      We respond within 24 hours
+                    </p>
                   </div>
                 </div>
               </div>
@@ -320,7 +385,9 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3 md:gap-4">
                   <div className="text-xl md:text-2xl">🕒</div>
                   <div>
-                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2">Business Hours</h3>
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2">
+                      Business Hours
+                    </h3>
                     <div className="text-sm md:text-base text-gray-700 space-y-1">
                       <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
                       <p>Saturday: 9:00 AM - 2:00 PM</p>

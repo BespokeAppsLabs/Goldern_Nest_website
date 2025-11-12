@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
-import { motion, AnimatePresence } from "motion/react";
-
-import { useCallback, useEffect, useState } from "react";
-import Image from "next/image";
+import { AnimatePresence, motion } from 'motion/react';
+import Image from 'next/image';
+import { useCallback, useEffect, useState } from 'react';
 
 type Testimonial = {
   quote: string;
@@ -71,7 +70,7 @@ export const AnimatedTestimonials = ({
                   }}
                   transition={{
                     duration: 0.4,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                   }}
                   className="absolute inset-0 origin-bottom"
                 >
@@ -106,28 +105,28 @@ export const AnimatedTestimonials = ({
             }}
             transition={{
               duration: 0.2,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
             className="relative"
           >
             <motion.div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 via-accent-500/15 to-primary-600/20 rounded-2xl blur-xl"></motion.div>
             <motion.p className="relative text-lg md:text-xl font-medium text-primary-900 md:bg-gradient-to-br md:from-primary-50 md:via-white md:to-primary-100/80 md:backdrop-blur-md rounded-2xl px-6 py-4 leading-relaxed shadow-lg border border-primary-200/30 md:shadow-primary-300/10">
-              {testimonials[active].quote.split(" ").map((word, index) => (
+              {testimonials[active].quote.split(' ').map((word, index) => (
                 <motion.span
                   key={`word-${active}-${index}-${word}`}
                   initial={{
-                    filter: "blur(10px)",
+                    filter: 'blur(10px)',
                     opacity: 0,
                     y: 5,
                   }}
                   animate={{
-                    filter: "blur(0px)",
+                    filter: 'blur(0px)',
                     opacity: 1,
                     y: 0,
                   }}
                   transition={{
                     duration: 0.2,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.02 * index,
                   }}
                   className="inline-block hover:text-primary-700 transition-colors duration-200"

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useAnimate } from "motion/react";
-import { NavigationContent } from "../constants/navigation";
-import Image from "next/image";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon } from 'lucide-react';
+import { useAnimate } from 'motion/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { NavigationContent } from '../constants/navigation';
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true); // Always visible for top navbar
@@ -18,18 +18,27 @@ export default function Navbar() {
   const [scope, animate] = useAnimate();
 
   // Animate selected item with wiggle effect
-  const animateSelectedItem = useCallback(async (itemLabel: string) => {
-    const selectedElement = document.querySelector(`[data-nav-item="${itemLabel}"]`);
-    if (selectedElement) {
-      await animate(selectedElement, {
-        scale: [1, 1.1, 1],
-        rotate: [0, -2, 2, -1, 1, 0]
-      }, {
-        duration: 0.6,
-        ease: "easeInOut"
-      });
-    }
-  }, [animate]);
+  const animateSelectedItem = useCallback(
+    async (itemLabel: string) => {
+      const selectedElement = document.querySelector(
+        `[data-nav-item="${itemLabel}"]`,
+      );
+      if (selectedElement) {
+        await animate(
+          selectedElement,
+          {
+            scale: [1, 1.1, 1],
+            rotate: [0, -2, 2, -1, 1, 0],
+          },
+          {
+            duration: 0.6,
+            ease: 'easeInOut',
+          },
+        );
+      }
+    },
+    [animate],
+  );
 
   // Show navbar when scrolling up (but keep it more visible than before)
   useEffect(() => {
@@ -43,13 +52,15 @@ export default function Navbar() {
       }
       lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Set selected item based on current pathname
   useEffect(() => {
-    const currentItem = NavigationContent.menu.find(item => item.href === pathname);
+    const currentItem = NavigationContent.menu.find(
+      (item) => item.href === pathname,
+    );
     if (currentItem) {
       setSelectedItem(currentItem.label);
       // Animate the selected item
@@ -62,12 +73,13 @@ export default function Navbar() {
   // Close mobile menu on window resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) { // md breakpoint
+      if (window.innerWidth >= 768) {
+        // md breakpoint
         setIsMobileMenuOpen(false);
       }
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Handle item click with animation
@@ -81,15 +93,17 @@ export default function Navbar() {
     <nav
       ref={scope}
       className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 transition-all duration-500 z-50
-        ${visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
+        ${visible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
       `}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       aria-label="Main navigation"
     >
-      <div className={`flex items-center gap-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg rounded-full px-6 py-3 border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300
-        ${hovered ? "bg-white dark:bg-gray-900 shadow-xl scale-105" : ""}
-      `}>
+      <div
+        className={`flex items-center gap-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg rounded-full px-6 py-3 border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300
+        ${hovered ? 'bg-white dark:bg-gray-900 shadow-xl scale-105' : ''}
+      `}
+      >
         {NavigationContent.menu.map((item) => {
           const IconComponent = item.icon;
           const isSelected = selectedItem === item.label;
@@ -100,18 +114,23 @@ export default function Navbar() {
               data-nav-item={item.label}
               onClick={() => handleItemClick(item.label)}
               className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 group relative overflow-hidden
-                ${isSelected
-                  ? "bg-primary-500 text-white shadow-lg scale-110"
-                  : "text-gray-700 dark:text-white hover:bg-primary-100 dark:hover:bg-accent-800"
+                ${
+                  isSelected
+                    ? 'bg-primary-500 text-white shadow-lg scale-110'
+                    : 'text-gray-700 dark:text-white hover:bg-primary-100 dark:hover:bg-accent-800'
                 }
               `}
             >
-              <IconComponent className={`h-4 w-4 flex-shrink-0 transition-all duration-300
-                ${isSelected ? "animate-pulse" : "group-hover:scale-110"}
-              `} />
-              <span className={`text-sm whitespace-nowrap transition-all duration-300
-                ${isSelected ? "font-bold" : "font-normal"}
-              `}>
+              <IconComponent
+                className={`h-4 w-4 flex-shrink-0 transition-all duration-300
+                ${isSelected ? 'animate-pulse' : 'group-hover:scale-110'}
+              `}
+              />
+              <span
+                className={`text-sm whitespace-nowrap transition-all duration-300
+                ${isSelected ? 'font-bold' : 'font-normal'}
+              `}
+              >
                 {item.label}
               </span>
               {isSelected && (
@@ -187,7 +206,12 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -208,18 +232,23 @@ export default function Navbar() {
                       handleItemClick(item.label);
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl transition-all duration-300
-                      ${isSelected
-                        ? "bg-primary-500 text-white shadow-lg scale-105"
-                        : "text-gray-900 dark:text-white hover:bg-primary-100 dark:hover:bg-accent-800"
+                      ${
+                        isSelected
+                          ? 'bg-primary-500 text-white shadow-lg scale-105'
+                          : 'text-gray-900 dark:text-white hover:bg-primary-100 dark:hover:bg-accent-800'
                       }
                     `}
                   >
-                    <IconComponent className={`h-6 w-6 transition-all duration-300
-                      ${isSelected ? "animate-pulse" : ""}
-                    `} />
-                    <span className={`text-lg transition-all duration-300
-                      ${isSelected ? "font-bold" : "font-normal"}
-                    `}>
+                    <IconComponent
+                      className={`h-6 w-6 transition-all duration-300
+                      ${isSelected ? 'animate-pulse' : ''}
+                    `}
+                    />
+                    <span
+                      className={`text-lg transition-all duration-300
+                      ${isSelected ? 'font-bold' : 'font-normal'}
+                    `}
+                    >
                       {item.label}
                     </span>
                   </Link>

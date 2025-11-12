@@ -10,7 +10,7 @@ import {
   Section,
   Text,
 } from '@react-email/components';
-import * as React from 'react';
+import type * as React from 'react';
 
 interface EmailTemplateProps {
   name: string;
@@ -80,8 +80,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     <Preview>
       {formType === 'farm-tour'
         ? 'New farm tour request from Golden Nest website'
-        : 'New message from your Golden Nest contact form'
-      }
+        : 'New message from your Golden Nest contact form'}
     </Preview>
     <Body style={main}>
       <Container style={container}>
@@ -96,43 +95,83 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
           <Heading style={heading}>
             {formType === 'farm-tour'
               ? 'New Farm Tour Request'
-              : 'New Contact Form Submission'
-            }
+              : 'New Contact Form Submission'}
           </Heading>
           <Text style={text}>
             {formType === 'farm-tour'
               ? 'You have received a new farm tour request from the Golden Nest website.'
-              : 'You have received a new message from Golden Nest website contact form.'
-            }
+              : 'You have received a new message from Golden Nest website contact form.'}
           </Text>
 
-          <Section style={{ borderTop: '1px solid #e5e7eb', paddingTop: '20px' }}>
+          <Section
+            style={{ borderTop: '1px solid #e5e7eb', paddingTop: '20px' }}
+          >
             {/* Contact Information */}
-            <Text style={{...text, fontWeight: 'bold', marginBottom: '10px'}}>Contact Information:</Text>
-            <Text style={text}><strong>Name:</strong> {name}</Text>
-            <Text style={text}><strong>Email:</strong> {email}</Text>
-            {phone && <Text style={text}><strong>Phone:</strong> {phone}</Text>}
+            <Text style={{ ...text, fontWeight: 'bold', marginBottom: '10px' }}>
+              Contact Information:
+            </Text>
+            <Text style={text}>
+              <strong>Name:</strong> {name}
+            </Text>
+            <Text style={text}>
+              <strong>Email:</strong> {email}
+            </Text>
+            {phone && (
+              <Text style={text}>
+                <strong>Phone:</strong> {phone}
+              </Text>
+            )}
 
             {/* Farm Tour Information */}
             {formType === 'farm-tour' && (
               <>
-                <Text style={{...text, fontWeight: 'bold', marginTop: '20px', marginBottom: '10px'}}>
+                <Text
+                  style={{
+                    ...text,
+                    fontWeight: 'bold',
+                    marginTop: '20px',
+                    marginBottom: '10px',
+                  }}
+                >
                   Farm Tour Details:
                 </Text>
-                {preferredDate && <Text style={text}><strong>Preferred Date:</strong> {preferredDate}</Text>}
-                {groupSize && <Text style={text}><strong>Group Size:</strong> {groupSize}</Text>}
-                {visitPurpose && <Text style={text}><strong>Purpose of Visit:</strong> {visitPurpose}</Text>}
+                {preferredDate && (
+                  <Text style={text}>
+                    <strong>Preferred Date:</strong> {preferredDate}
+                  </Text>
+                )}
+                {groupSize && (
+                  <Text style={text}>
+                    <strong>Group Size:</strong> {groupSize}
+                  </Text>
+                )}
+                {visitPurpose && (
+                  <Text style={text}>
+                    <strong>Purpose of Visit:</strong> {visitPurpose}
+                  </Text>
+                )}
                 {specialRequirements && (
                   <>
-                    <Text style={text}><strong>Special Requirements:</strong></Text>
-                    <Text style={{...text, fontStyle: 'italic'}}>{specialRequirements}</Text>
+                    <Text style={text}>
+                      <strong>Special Requirements:</strong>
+                    </Text>
+                    <Text style={{ ...text, fontStyle: 'italic' }}>
+                      {specialRequirements}
+                    </Text>
                   </>
                 )}
               </>
             )}
 
             {/* Message */}
-            <Text style={{...text, fontWeight: 'bold', marginTop: '20px', marginBottom: '10px'}}>
+            <Text
+              style={{
+                ...text,
+                fontWeight: 'bold',
+                marginTop: '20px',
+                marginBottom: '10px',
+              }}
+            >
               {formType === 'farm-tour' ? 'Additional Notes:' : 'Message:'}
             </Text>
             <Text style={text}>{message}</Text>

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { FeatureContent } from "../constants";
+import { FeatureContent } from '../constants';
 
 export default function Highlights() {
   return (

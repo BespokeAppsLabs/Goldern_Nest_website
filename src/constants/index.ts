@@ -1,36 +1,32 @@
 // Main content exports
-export * from './home-content';
-export * from './navigation';
-export * from './seo';
-export * from './features';
-export * from './types';
-export * from './icons';
 
+export * from './features';
+export {
+  FeatureContent,
+  PricingContent,
+} from './features';
+export * from './home-content';
 // Re-export specific content for convenience
 export {
-    HeroContent,
-    AboutContent,
-    VisionContent,
-    OurProductsContent,
-    ServicesContent,
-    QualityContent,
-    LocationContent,
-    CustomerPromiseContent,
-    WhatCustomersSayContent,
-    CTAContent,
-    ContactContent,
+  AboutContent,
+  ContactContent,
+  CTAContent,
+  CustomerPromiseContent,
+  HeroContent,
+  LocationContent,
+  OurProductsContent,
+  QualityContent,
+  ServicesContent,
+  VisionContent,
+  WhatCustomersSayContent,
 } from './home-content';
-
+export * from './icons';
+export * from './navigation';
 export {
-    NavigationContent,
-    FooterContent
+  FooterContent,
+  NavigationContent,
 } from './navigation';
+export * from './seo';
 
-export {
-    SEOContent
-} from './seo';
-
-export {
-    FeatureContent,
-    PricingContent
-} from './features';
+export { SEOContent } from './seo';
+export * from './types';

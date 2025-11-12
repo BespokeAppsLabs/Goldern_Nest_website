@@ -1,8 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 // Define schema for Google config
 const googleSchema = z.object({
-  verification: z.string().min(1, "Google verification key is required"),
+  verification: z.string().min(1, 'Google verification key is required'),
   // maps: z.string().min(1, "Google Maps API key is required"),
   // recaptcha: z.string().min(1, "Google reCAPTCHA key is required"),
 });

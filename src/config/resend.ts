@@ -1,8 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 // Define schema for Resend config
 const resendSchema = z.object({
-  apiKey: z.string().min(1, "Resend API key is required"),
+  apiKey: z.string().min(1, 'Resend API key is required'),
 });
 
 // Validate environment variables

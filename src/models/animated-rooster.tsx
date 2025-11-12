@@ -6,18 +6,21 @@ Source: https://sketchfab.com/3d-models/chicken-walk-4f17286860b84c90b8e0671003a
 Title: Chicken walk
 */
 
-'use client'
+'use client';
 
-import { useRef, useEffect } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
-import { Group } from 'three'
+import { useAnimations, useGLTF } from '@react-three/drei';
+import { useEffect, useRef } from 'react';
+import type { Group } from 'three';
 
 interface AnimatedRoosterProps {
   currentAnimation?: string;
   [key: string]: unknown;
 }
 
-export function AnimatedRooster({ currentAnimation = 'idle', ...props }: AnimatedRoosterProps) {
+export function AnimatedRooster({
+  currentAnimation = 'idle',
+  ...props
+}: AnimatedRoosterProps) {
   const group = useRef<Group>(null);
 
   // Load the 3D model and animations from the provided GLTF file
@@ -73,7 +76,7 @@ export function AnimatedRooster({ currentAnimation = 'idle', ...props }: Animate
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/3d/animated-rooster.glb')
+useGLTF.preload('/3d/animated-rooster.glb');

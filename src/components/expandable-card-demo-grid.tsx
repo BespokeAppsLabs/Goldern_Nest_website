@@ -1,19 +1,20 @@
-"use client";
+'use client';
 
-import React, { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { useOutsideClick } from "@/hooks/use-outside-click";
-import Image from "next/image";
-import { AnimatedTestimonials } from "./ui/animated-testimonials";
+import { AnimatePresence, motion } from 'motion/react';
+import Image from 'next/image';
+import type React from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
+import { useOutsideClick } from '@/hooks/use-outside-click';
+import { AnimatedTestimonials } from './ui/animated-testimonials';
 
 // Default cards for demo purposes
 const defaultCards = [
   {
-    description: "Lana Del Rey",
-    title: "Summertime Sadness",
-    src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
-    ctaText: "Visit",
-    ctaLink: "https://ui.aceternity.com/templates",
+    description: 'Lana Del Rey',
+    title: 'Summertime Sadness',
+    src: 'https://assets.aceternity.com/demos/lana-del-rey.jpeg',
+    ctaText: 'Visit',
+    ctaLink: 'https://ui.aceternity.com/templates',
     content: () => {
       return (
         <p>
@@ -49,29 +50,31 @@ type GalleryCard = {
 
 type CardType = GalleryCard | (typeof defaultCards)[number];
 
-export default function ExpandableCardDemo({ cards: externalCards }: { cards?: CardType[] }) {
+export default function ExpandableCardDemo({
+  cards: externalCards,
+}: {
+  cards?: CardType[];
+}) {
   const displayCards = externalCards || defaultCards;
-  const [active, setActive] = useState<CardType | boolean | null>(
-    null
-  );
+  const [active, setActive] = useState<CardType | boolean | null>(null);
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         setActive(false);
       }
     }
 
-    if (active && typeof active === "object") {
-      document.body.style.overflow = "hidden";
+    if (active && typeof active === 'object') {
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     }
 
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [active]);
 
   useOutsideClick(ref, () => setActive(null));
@@ -79,7 +82,7 @@ export default function ExpandableCardDemo({ cards: externalCards }: { cards?: C
   return (
     <>
       <AnimatePresence>
-        {active && typeof active === "object" && active !== null && (
+        {active && typeof active === 'object' && active !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -89,7 +92,7 @@ export default function ExpandableCardDemo({ cards: externalCards }: { cards?: C
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {active && typeof active === "object" && active !== null ? (
+        {active && typeof active === 'object' && active !== null ? (
           <div className="fixed inset-0  grid place-items-center z-[100]">
             <motion.button
               key={`button-${active.title}-${id}`}
@@ -164,17 +167,27 @@ export default function ExpandableCardDemo({ cards: externalCards }: { cards?: C
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-auto md:h-fit pb-10 flex flex-col items-start gap-4 overflow-hidden dark:text-neutral-400"
                   >
                     {(() => {
-                      if (active && 'categoryData' in active && 'testimonials' in active && active.categoryData && active.testimonials) {
+                      if (
+                        active &&
+                        'categoryData' in active &&
+                        'testimonials' in active &&
+                        active.categoryData &&
+                        active.testimonials
+                      ) {
                         return (
                           <div className="w-full ">
-                            <p className="mb-6 text-gray-700">{active.categoryData.description}</p>
-                            <AnimatedTestimonials testimonials={active.testimonials} />
+                            <p className="mb-6 text-gray-700">
+                              {active.categoryData.description}
+                            </p>
+                            <AnimatedTestimonials
+                              testimonials={active.testimonials}
+                            />
                           </div>
                         );
                       }
 
                       if (active && 'content' in active) {
-                        if (typeof active.content === "function") {
+                        if (typeof active.content === 'function') {
                           return active.content();
                         }
                         return active.content;
@@ -263,5 +276,3 @@ export const CloseIcon = () => {
     </motion.svg>
   );
 };
-
-

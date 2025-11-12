@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useId, useRef } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { useOutsideClick } from "@/hooks/use-outside-click";
-import Image from "next/image";
-import { AnimatedTestimonials } from "./animated-testimonials";
+import { AnimatePresence, motion } from 'motion/react';
+import Image from 'next/image';
+import React, { useEffect, useId, useRef, useState } from 'react';
+import { useOutsideClick } from '@/hooks/use-outside-click';
+import { cn } from '@/lib/utils';
+import { AnimatedTestimonials } from './animated-testimonials';
 
 export const Card = React.memo(
   ({
@@ -29,8 +29,11 @@ export const Card = React.memo(
       onMouseLeave={() => setHovered(null)}
       onClick={onClick}
       className={cn(
-        "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out cursor-pointer",
-        hovered !== null && hovered !== index && !isActive && "blur-sm scale-[0.98]"
+        'rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out cursor-pointer',
+        hovered !== null &&
+          hovered !== index &&
+          !isActive &&
+          'blur-sm scale-[0.98]',
       )}
     >
       <Image
@@ -41,8 +44,8 @@ export const Card = React.memo(
       />
       <div
         className={cn(
-          "absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end py-8 px-6 transition-opacity duration-300",
-          hovered === index || isActive ? "opacity-100" : "opacity-0"
+          'absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end py-8 px-6 transition-opacity duration-300',
+          hovered === index || isActive ? 'opacity-100' : 'opacity-0',
         )}
       >
         <div className="w-full">
@@ -50,24 +53,26 @@ export const Card = React.memo(
             {card.title}
           </div>
           {card.categoryDescription && (
-            <div className="text-sm md:text-base text-white/90 leading-relaxed max-w-full overflow-hidden"
-                 style={{
-                   display: '-webkit-box',
-                   WebkitLineClamp: 3,
-                   WebkitBoxOrient: 'vertical' as const,
-                   lineHeight: '1.4',
-                   maxHeight: '4.2em'
-                 }}>
+            <div
+              className="text-sm md:text-base text-white/90 leading-relaxed max-w-full overflow-hidden"
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical' as const,
+                lineHeight: '1.4',
+                maxHeight: '4.2em',
+              }}
+            >
               {card.categoryDescription}
             </div>
           )}
         </div>
       </div>
     </motion.div>
-  )
+  ),
 );
 
-Card.displayName = "Card";
+Card.displayName = 'Card';
 
 type Card = {
   title: string;
@@ -85,25 +90,27 @@ type Card = {
 
 export function FocusCards({ cards }: { cards: Card[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
-  const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(null);
+  const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
+    null,
+  );
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         setActive(false);
       }
     }
 
-    if (active && typeof active === "object") {
-      document.body.style.overflow = "hidden";
+    if (active && typeof active === 'object') {
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     }
 
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [active]);
 
   useOutsideClick(ref, () => setActive(null));
@@ -111,7 +118,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
   return (
     <>
       <AnimatePresence>
-        {active && typeof active === "object" && (
+        {active && typeof active === 'object' && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -121,11 +128,10 @@ export function FocusCards({ cards }: { cards: Card[] }) {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {active && typeof active === "object" ? (
+        {active && typeof active === 'object' ? (
           <div className="fixed inset-0 grid place-items-center z-[100]">
-            
             <motion.div
-              layoutId={`card-${active.title}-${cards.findIndex(c => c.title === active.title)}`}
+              layoutId={`card-${active.title}-${cards.findIndex((c) => c.title === active.title)}`}
               ref={ref}
               className="w-full max-w-[800px] h-auto max-h-[90vh] md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden rounded-2xl"
             >
@@ -185,9 +191,9 @@ export function FocusCards({ cards }: { cards: Card[] }) {
                     }}
                     className="flex absolute top-0 right-2 lg:hidden items-center justify-center rounded-full h-10 w-10  z-50 touch-manipulation"
                     onClick={() => setActive(null)}
-                >
-                 <CloseIcon />
-                </motion.button>
+                  >
+                    <CloseIcon />
+                  </motion.button>
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
@@ -201,12 +207,14 @@ export function FocusCards({ cards }: { cards: Card[] }) {
                           testimonials={active.images.map((image) => ({
                             quote: image.alt,
                             name: image.title,
-                            designation: active.description || "",
-                            src: image.src
+                            designation: active.description || '',
+                            src: image.src,
                           }))}
                         />
                       </div>
-                    ) : active?.content}
+                    ) : (
+                      active?.content
+                    )}
                   </motion.div>
                 </div>
               </div>
